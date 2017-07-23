@@ -15,7 +15,7 @@
     <form action="">
         <table align="center">
             <tr>
-                <td>レシート・注文番号:</td>
+                <td>レシート・注文No.:</td>
                 <td><input type="text"></td>
                 <td>255文字以内</td>
             </tr>
