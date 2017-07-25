@@ -1,3 +1,4 @@
+<?php session_start();?>
 <html>
 
 <head>
@@ -21,7 +22,7 @@
             </tr>
             <tr>
                 <td>利用日:</td>
-                <td><input type="text" name="usedDate">*</td>
+                <td><input type="text" name="usedDate" value="<?php echo date("Ymd")?>">*</td>
                 <td>yyyyMMdd形式</td>
                 <td><span style="color:red">入力必須項目</span></td>
             </tr>
@@ -37,7 +38,6 @@
                     <option value="家族">家族</option>
                 </select></td>
                 <td> </td>
-                <td><span style="color:red">入力必須項目</span></td>
             </tr>
             <tr>
                 <td>利用店名:</td>
@@ -72,14 +72,18 @@
             <input type="submit">
             <input type="button" value="クリア">
         </div>
-        <?php
-        session_start();
-        if (array_key_exists('csvWriteResult', $_SESSION)) {
-            echo $_SESSION['csvWriteResult'];
-        }
-            
+        <br>
+        <div align="center">
+            <span style="color:blue">
+            <?php
+            if (isset($_SESSION['csvWriteResult'])) {
+                echo $_SESSION['csvWriteResult'];
+                unset($_SESSION['csvWriteResult']);
+            }
+            ?>
+            </span>
+        </div>
         
-        ?>
 
     </form>
 </body>
