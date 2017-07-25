@@ -1,4 +1,5 @@
-<?php
+<?php session_start();
+
 $csvWriteResult="fault";
 
 $receiptNo=$_POST["receiptNo"] ;
@@ -14,13 +15,11 @@ $comment= $_POST["comment"] ;
 $csvText=array($receiptNo,$usedDate,$usedTime,$user,$storeName,$paymentSplitTimes,$amount,$paymentMethod,$comment);
 $csvText=addDoubleQuotationForElements($csvText);
 
-
 $csvFile = fopen(substr($usedDate, 0, 6).".csv", "a");
-fputcsv($csvFile, $csvText, ',', ' ');
-fwrite($csvFile, "\r\n");
+fwrite($csvFile, implode(",", $csvText)."\r\n");
 fclose($csvFile);
 
-$csvWriteResult="success";
+$csvWriteResult="登録成功!";
 $_SESSION['csvWriteResult']=$csvWriteResult;
 header("Location: index.php");
 
