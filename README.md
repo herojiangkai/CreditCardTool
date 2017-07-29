@@ -10,4 +10,3 @@ Just do not make fun of our poorly IT skills.
 Thank you very much for visiting.  
   
 All rights reserved.  
-HAHA
