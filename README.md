@@ -8,3 +8,6 @@ We hope we can learn about IT through this project that we started out of intere
 Any kind of help are appreciated.  
 Just do not make fun of our poorly IT skills.  
 Thank you very much for visiting.  
+  
+All rights reserved.  
+aaa
