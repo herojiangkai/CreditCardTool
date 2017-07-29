@@ -9,4 +9,5 @@ Any kind of help are appreciated.
 Just do not make fun of our poorly IT skills.  
 Thank you very much for visiting.  
   
-All rights reserved.
+All rights reserved.  
+HAHAHA
