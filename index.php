@@ -3,6 +3,9 @@
 
 <head>
     <title>レシート・クレジット実績登録画面</title>
+    <!DOCTYPE HTML>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,user-scalable=no" name="viewport">
 </head>
 
 <body>
