@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>レシート・クレジット実績登録画面</title>
+    <title>出費登録画面</title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta content="width=device-width,user-scalable=no" name="viewport">
@@ -23,7 +23,7 @@
         <input type="button" value="精算画面">
     </div> -->
 
-    <h1 align="center">クレジット登録</h1>
+    <h1 align="center">出費登録</h1>
     <br>
         <div align="center">
             <span style="color:blue">
@@ -48,12 +48,14 @@
             <tr><td><input type="text" name="storeName"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用金額:</td></tr>
             <tr><td><input type="text" name="amount"><span style="color:red">(必須)</span></td></tr>
-            <tr><td>利用者:</td></tr>
+            <tr><td>利用区分:</td></tr>
             <tr>
                 <td><select name="user" id="user">
-                    <option value="" selected></option>
+                    <option value="" selected>ーー</option>
                     <option value="本人">6229</option>
                     <option value="家族">9283</option>
+                    <option value="現金(姜)">現金(姜)</option>
+                    <option value="現金(王)">現金(王)</option>
                 </select><span style="color:red">(選択間違い注意)</span></td>
             </tr>
             <tr><td>分割支払回数:</td></tr>

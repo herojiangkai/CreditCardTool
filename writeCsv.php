@@ -15,7 +15,13 @@ $comment= $_POST["comment"] ;
 $csvText=array($receiptNo,$usedDate,$usedTime,$user,$storeName,$paymentSplitTimes,$amount,$paymentMethod,$comment);
 $csvText=addDoubleQuotationForElements($csvText);
 
-$csvFile = fopen("csv/".substr($usedDate, 0, 6).".csv", "a");
+if (strpos($user, "現金")===false) {
+    $csvOutDir="csv/";
+} else {
+    $csvOutDir="csvCash/";
+}
+
+$csvFile = fopen($csvOutDir.substr($usedDate, 0, 6).".csv", "a");
 fwrite($csvFile, implode(",", $csvText)."\r\n");
 fclose($csvFile);
 
