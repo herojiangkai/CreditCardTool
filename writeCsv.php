@@ -3,7 +3,7 @@
 $csvWriteResult="fault";
 
 $receiptNo=$_POST["receiptNo"] ;
-$usedDate= $_POST["usedDate"] ;
+$usedDate= str_replace("-","",$_POST["usedDate"]) ;
 $usedTime= $_POST["usedTime"] ;
 $user= $_POST["user"] ;
 $storeName= $_POST["storeName"] ;
