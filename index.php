@@ -8,7 +8,13 @@
     <meta content="width=device-width,user-scalable=no" name="viewport">
     <script type="text/javascript">
         function checkAndSubmit() {
-            if(document.getElementById("user").value==""){
+            if(document.getElementById("usedDate").value==""){
+                alert("利用日を入力してください。");
+            }else if(document.getElementById("storeName").value==""){
+                alert("利用店名を入力してください。");
+            }else if(document.getElementById("amount").value==""){
+                alert("利用金額を入力してください。");
+            }else if(document.getElementById("user").value==""){
                 alert("利用者を選択してください。");
             }else{
                 document.getElementById("creditInputForm").submit();
@@ -41,13 +47,13 @@
             <tr><td>レシート・注文番号:</td></tr>
             <tr><td><input type="text" name="receiptNo"></td></tr>
             <tr><td>利用日(yyyyMMdd形式):</td></tr>
-            <tr><td><input type="date" name="usedDate" value="<?php echo date("Y-m-d")?>"><span style="color:red">(必須)</span></td></tr>
+            <tr><td><input type="date" name="usedDate" id="usedDate" value="<?php echo date("Y-m-d")?>"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用時刻(HHmmss形式):</td></tr>
             <tr><td><input type="text" name="usedTime"></td></tr>
             <tr><td>利用店名(50文字以内):</td></tr>
-            <tr><td><input type="text" name="storeName"><span style="color:red">(必須)</span></td></tr>
+            <tr><td><input type="text" name="storeName" id="storeName"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用金額:</td></tr>
-            <tr><td><input type="number" name="amount"><span style="color:red">(必須)</span></td></tr>
+            <tr><td><input type="number" name="amount" id="amount"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用区分:</td></tr>
             <tr>
                 <td><select name="user" id="user">
