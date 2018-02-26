@@ -49,7 +49,7 @@
             <tr><td>利用日(yyyyMMdd形式):</td></tr>
             <tr><td><input type="date" name="usedDate" id="usedDate" value="<?php echo date("Y-m-d")?>"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用時刻(HHmmss形式):</td></tr>
-            <tr><td><input type="text" name="usedTime"></td></tr>
+            <tr><td><input type="number" name="usedTime"></td></tr>
             <tr><td>利用店名(50文字以内):</td></tr>
             <tr><td><input type="text" name="storeName" id="storeName"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用金額:</td></tr>
