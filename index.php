@@ -49,7 +49,7 @@
             <tr><td>利用日(yyyyMMdd形式):</td></tr>
             <tr><td><input type="date" name="usedDate" id="usedDate" value="<?php echo date("Y-m-d")?>"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用時刻(HHmmss形式):</td></tr>
-            <tr><td><input type="number" name="usedTime"></td></tr>
+            <tr><td><input type="number" name="usedTime" oninput="if(value.length>6)value=value.slice(0,6)"></td></tr>
             <tr><td>利用店名(50文字以内):</td></tr>
             <tr><td><input type="text" name="storeName" id="storeName"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用金額:</td></tr>
@@ -58,14 +58,14 @@
             <tr>
                 <td><select name="user" id="user">
                     <option value="" selected>ーー</option>
-                    <option value="本人">6229</option>
-                    <option value="家族">9283</option>
+                    <option value="本人">6229(姜)</option>
+                    <option value="家族">9283(王)</option>
                     <option value="現金(姜)">現金(姜)</option>
                     <option value="現金(王)">現金(王)</option>
                 </select><span style="color:red">(選択間違い注意)</span></td>
             </tr>
             <tr><td>分割支払回数:</td></tr>
-            <tr><td><input type="text" value="1" name="paymentSplitTimes"><span style="color:red">(必須)</span></td></tr>
+            <tr><td><input type="number" value="1" name="paymentSplitTimes"><span style="color:red">(必須)</span></td></tr>
             <tr><td>支払方法:</td></tr>
             <tr><td><input type="text" name="paymentMethod"></td></tr>
             <tr><td>備考(255文字以内):</td></tr>
