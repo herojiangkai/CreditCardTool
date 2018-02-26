@@ -15,7 +15,7 @@
             }else if(document.getElementById("amount").value==""){
                 alert("利用金額を入力してください。");
             }else if(document.getElementById("user").value==""){
-                alert("利用者を選択してください。");
+                alert("利用区分を選択してください。");
             }else{
                 document.getElementById("creditInputForm").submit();
             }
