@@ -30,6 +30,12 @@
     </div> -->
 
     <h1 align="center">出費登録</h1>
+
+    <div align="center">
+        <a href="q">クレジット入力照会</a>
+        <a href="qCash">現金入力照会</a>
+    </div>
+    
     <br>
         <div align="center">
             <span style="color:blue">
@@ -49,7 +55,8 @@
             <tr><td>利用日(yyyyMMdd形式):</td></tr>
             <tr><td><input type="date" name="usedDate" id="usedDate" value="<?php echo date("Y-m-d")?>"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用時刻(HHmmss形式):</td></tr>
-            <tr><td><input type="number" name="usedTime" oninput="if(value.length>6)value=value.slice(0,6)"></td></tr>
+            <tr><td><input type="number" name="usedTime" oninput="if(value.length>6)value=value.slice(0,6)"
+                            onblur="if(value.length==4)value=value+'00'"></td></tr>
             <tr><td>利用店名(50文字以内):</td></tr>
             <tr><td><input type="text" name="storeName" id="storeName"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用金額:</td></tr>
