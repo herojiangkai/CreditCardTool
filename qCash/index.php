@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>クレジット入力照会</title>
+    <title>現金入力照会</title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta content="width=device-width,user-scalable=no" name="viewport">

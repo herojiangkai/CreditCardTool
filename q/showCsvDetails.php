@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title><?php echo $_POST["submit"]?></title>
+    <title>クレジット　<?php echo $_POST["submit"]?></title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta name="theme-color" content="#ffd700">
