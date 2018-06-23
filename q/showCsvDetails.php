@@ -3,11 +3,14 @@
     <title><?php echo $_POST["submit"]?></title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
+    <meta name="theme-color" content="#ffd700">
 </head>
 <body>
     <h3 align="center">クレジット　<?php echo $_POST["submit"]?></h3>
-    <a href="../index.php">入力画面</a>
-    <a href="#" onClick="javaScript:history.go(-1)" style="text-align:center">返回</a>
+    <div align="right">
+        <a href="../index.php">入力画面</a>
+        <a href="#" onClick="javaScript:history.go(-1)" style="text-align:center">返回</a>
+    </div>
     <table border="1">
         <tr>
             <th>レシート・注文番号</th>

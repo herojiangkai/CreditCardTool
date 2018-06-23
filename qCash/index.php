@@ -4,13 +4,14 @@
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta content="width=device-width,user-scalable=no" name="viewport">
+    <meta name="theme-color" content="#008000">
 </head>
 <body>
-<h3>現金入力照会</h3>
-<a href="../index.php">入力画面</a>
+<h3 align="center">現金入力照会</h3>
+<div align="right"><a href="../index.php">入力画面</a></div>
 <br><br>
 <form method= "post" action="showCsvDetails.php">
-    <table>
+    <table align="center">
     <?php
         $file=scandir("../csvCash");
         foreach($file as $csvFileName){

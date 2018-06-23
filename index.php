@@ -6,6 +6,7 @@
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta content="width=device-width,user-scalable=no" name="viewport">
+    <meta name="theme-color" content="#8a2be2">
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="bookmark"href="/favicon.ico" />
     <script type="text/javascript">
@@ -31,7 +32,7 @@
         <input type="button" value="精算画面">
     </div> -->
 
-    <h1 align="center">出費登録</h1>
+    <h3 align="center">出費登録</h3>
 
     <div align="center">
         <a href="q">クレジット入力照会</a>
