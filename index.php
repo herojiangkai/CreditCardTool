@@ -6,6 +6,8 @@
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta content="width=device-width,user-scalable=no" name="viewport">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="bookmark"href="/favicon.ico" />
     <script type="text/javascript">
         function checkAndSubmit() {
             if(document.getElementById("usedDate").value==""){
