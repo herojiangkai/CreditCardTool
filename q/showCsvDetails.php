@@ -1,12 +1,12 @@
 <html>
 <head>
-    <title>クレジット　<?php echo $_POST["submit"]?></title>
+    <title>クレジット　<?php echo $_POST["csvFileName"]?></title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta name="theme-color" content="#ffd700">
 </head>
 <body>
-    <h3 align="center">クレジット　<?php echo $_POST["submit"]?></h3>
+    <h3 align="center">クレジット　<?php echo $_POST["csvFileName"]?></h3>
     <div align="right">
         <a href="../index.php">入力画面</a>
         <a href="#" onClick="javaScript:history.go(-1)" style="text-align:center">返回</a>
@@ -24,7 +24,7 @@
             <th>備考</th>
         </tr>
         <?php
-        $csvFilePath="../csv/".$_POST["submit"];
+        $csvFilePath=$_POST["folderPath"].$_POST["csvFileName"];
         $csvFile = fopen($csvFilePath, "r") or die("Unable to open csv file-> ".$csvFilePath);
         while(!feof($csvFile)) {
             $currentLine=fgets($csvFile);

@@ -10,17 +10,32 @@
 <h3 align="center">クレジット入力照会</h3>
 <div align="right"><a href="../index.php">入力画面</a></div>
 <br><br>
-<form method= "post" action="showCsvDetails.php">
-    <table align="center">
+    <table align="center" border="1">
     <?php
-        $file=scandir("../csv");
-        foreach($file as $csvFileName){
-            if(strpos($csvFileName, ".csv")!==false){
-                 echo '<tr><td><input type="submit" name="submit" value="'.$csvFileName.'"<tr><td><br><br>';
-            }
-        }
+        printCsvFileList("イオンカード","../csvAeon/");
+        printCsvFileList("EPOSカード(姜)","../csvEposJiang/");
+        printCsvFileList("EPOSカード(王)","../csvEposWang/");
+        printCsvFileList("Bicカード","../csvBic/");
+        printCsvFileList("楽天カード","../csv/");
+        printCsvFileList("LUMINEカード","../csvLumine/");
+        printCsvFileList("ファミマTカード","../csvFt/");
     ?>
     </table>
-</form>
 </body>
 </html>
+<?php
+
+function printCsvFileList($cardTypeName,$folderPath){
+    echo "<tr><td>$cardTypeName</td><td><br>";
+    echo '<form method= "post" action="showCsvDetails.php">';
+    echo '<input type="hidden" name="folderPath" value="'.$folderPath.'">';
+    $file=scandir($folderPath);
+    foreach($file as $csvFileName){
+        if(strpos($csvFileName, ".csv")!==false){
+             echo '<input type="submit" name="csvFileName" value="'.$csvFileName.'"><br><br>';
+        }
+    }
+    echo "</form></td></tr>";
+}
+
+?>

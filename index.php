@@ -68,10 +68,17 @@
             <tr>
                 <td><select name="user" id="user">
                     <option value="" selected>ーー</option>
-                    <option value="本人">6229(姜)</option>
-                    <option value="家族">9283(王)</option>
                     <option value="現金(姜)">現金(姜)</option>
                     <option value="現金(王)">現金(王)</option>
+                    <option value="aeon_姜(9705)">イオン_姜(9705)</option>
+                    <option value="aeon_王(9713)">イオン_王(9713)</option>
+                    <option value="epos_姜(8142)">EPOS_姜(8142)</option>
+                    <option value="epos_王(6393)">EPOS_王(6393)</option>
+                    <option value="bic(6116)">Bic(6116)</option>
+                    <option value="本人">楽天_姜(6229)</option>
+                    <option value="家族">楽天_王(9283)</option>                
+                    <option value="lumine(6116)">Lumine(6116)</option>
+                    <option value="ft(8518)">ファミマT(8518)</option>                    
                 </select><span style="color:red">(選択間違い注意)</span></td>
             </tr>
             <tr><td>分割支払回数:</td></tr>
