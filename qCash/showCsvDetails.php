@@ -26,6 +26,7 @@
         <?php
         $csvFilePath="../csvCash/".$_POST["submit"];
         $csvFile = fopen($csvFilePath, "r") or die("Unable to open csv file-> ".$csvFilePath);
+        $totalAmount=0;
         while(!feof($csvFile)) {
             $currentLine=fgets($csvFile);
             $currentColums=explode('","',$currentLine);
@@ -33,13 +34,19 @@
                 echo "<tr>";
                 echo "<td>".substr($currentColums[0],1)."</td>";
                 for($i=1;$i<sizeof($currentColums)-1;$i++){
-                    echo "<td>".$currentColums[$i]."</td>";
+                    if($i===6){
+                        echo "<td align='right'>".$currentColums[$i]."</td>";
+                    }else{
+                        echo "<td>".$currentColums[$i]."</td>";
+                    }
                 }
                 echo "<td>".substr($currentColums[sizeof($currentColums)-1],0,-3)."</td>";
                 echo "</tr>";
+                $totalAmount+=(int)$currentColums[6];
             }
         }
         fclose($csvFile);
+        echo "<tr><th></th><th></th><th></th><th></th><th></th><th align='right'>総額⇒</th><th align='right'>$totalAmount</th><th></th><th></th></tr>"
         ?>
 
     </table>
