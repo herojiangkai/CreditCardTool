@@ -85,7 +85,7 @@
         }
         fclose($csvFile);
         echo "</tbody>";
-        echo "<tr><th></th><th></th><th></th><th></th><th></th><th align='right'>総額⇒</th><th align='right'>$totalAmount</th><th></th><th></th></tr>"
+        echo "<tr><th></th><th></th><th></th><th></th><th></th><th align='right'>総額⇒</th><th align='right'><font color='red'>$totalAmount</font></th><th></th><th></th></tr>"
         ?>
 
     </table>
