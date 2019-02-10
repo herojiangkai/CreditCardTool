@@ -67,6 +67,7 @@
         $totalAmount=0;
         while(!feof($csvFile)) {
             $currentLine=fgets($csvFile);
+            $currentLine=str_replace(" ","&nbsp",$currentLine);
             $currentColums=explode('","',$currentLine);
             if(sizeof($currentColums)>1){
                 echo "<tr>";
