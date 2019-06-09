@@ -29,13 +29,10 @@
       echo $db->lastErrorMsg();
    }
 
-   $sql="select * from  
-        (SELECT substr(date_of_use,0,7) as yearMonth
+   $sql="SELECT substr(date_of_use,0,7) as yearMonth
                ,sum(usage_amount)      as totalAmount
          FROM t_credit_card_user_input_details
          group by yearMonth
-         order by yearMonth desc
-         limit 2)
          order by yearMonth;";
    $ret = $db->query($sql);
    ?>
