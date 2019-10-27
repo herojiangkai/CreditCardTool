@@ -20,7 +20,8 @@
 
    $targetDirArray=array("../csvCash/","../csvAeon/","../csvEposJiang/",
                         "../csvEposWang/","../csvBic/","../csv/",
-                        "../csvLumine/","../csvFt/","../csvAeon/done_except_sum/");
+                        "../csvLumine/","../csvFt/","../csvAeon/done_except_sum/",
+                        "../csvToho/","../csvToho/done_except_sum/");
 
    $sql=makeInsertSqlForAllCsv($targetDirArray);
 

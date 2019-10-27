@@ -36,6 +36,9 @@ if (strpos($user, "現金")!==false) {
 }else if(strpos($user, "ft")!==false){
     $csvOutDir="csvFt/";
     $csvFileName=substr($usedDate, 0, 6)."_ft";
+}else if(strpos($user, "toho")!==false){
+    $csvOutDir="csvToho/";
+    $csvFileName=datePeriodAdjuestedByClosingDay($usedDate,10)."_toho";
 }else{
     $csvOutDir="csv/";
     $csvFileName=substr($usedDate, 0, 6);

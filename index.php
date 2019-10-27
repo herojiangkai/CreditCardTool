@@ -78,7 +78,8 @@
                     <option value="本人">楽天_姜(6229)</option>
                     <option value="家族">楽天_王(9283)</option>                
                     <option value="lumine(7914)">Lumine(7914)</option>
-                    <option value="ft(8518)">ファミマT(8518)</option>                    
+                    <option value="ft(8518)">ファミマT(8518)</option>
+                    <option value="toho(8000)">TOHO(8000)</option>                    
                 </select><span style="color:red">(選択間違い注意)</span></td>
             </tr>
             <tr><td>分割支払回数:</td></tr>

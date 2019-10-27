@@ -19,6 +19,7 @@
         printCsvFileList("楽天カード","../csv/");
         printCsvFileList("LUMINEカード","../csvLumine/");
         printCsvFileList("ファミマTカード","../csvFt/");
+        printCsvFileList("TOHOカード","../csvToho/");
     ?>
     </table>
     <br><br><br><br><br><br>
