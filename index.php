@@ -38,6 +38,7 @@
         <a href="q">クレジット入力照会</a>
         <a href="qCash">現金入力照会</a><br><br>
         <a href="sum">月間集計</a>
+        <a href="sumOld">過去月間集計</a>
     </div>
     
         <div align="center">
