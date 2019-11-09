@@ -3,7 +3,7 @@
     <title>過去月間詳細　<?php echo $_GET["yearMonth"]?></title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#FF66CC">
+    <meta name="theme-color" content="#DCDCDC">
     
     <script type="text/javascript">
       function sortTime(title) {                   //title参数是所点击的表头所在的单元格对象

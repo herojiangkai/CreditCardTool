@@ -34,7 +34,7 @@
                ,sum(usage_amount)      as totalAmount
          FROM t_credit_card_user_input_details
          group by yearMonth
-         order by yearMonth;";
+         order by yearMonth desc;";
    $ret = $db->query($sql);
    ?>
 
@@ -44,7 +44,7 @@
    <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta content="width=device-width,user-scalable=no" name="viewport">
-    <meta name="theme-color" content="#FF66CC">
+    <meta name="theme-color" content="#DCDCDC">
 
 </head>
 <body>
