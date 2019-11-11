@@ -18,7 +18,10 @@
       echo $db->lastErrorMsg();
    }
 
-   $targetDirArray=array("../csvCash/done/","../csvAeon/done_except_sum/","../csvEposJiang/done/",
+   $targetDirArray=array("../csvCash/","../csvAeon/","../csvEposJiang/",
+                        "../csvEposWang/","../csvBic/","../csv/",
+                        "../csvLumine/","../csvFt/","../csvToho/",                        
+                        "../csvCash/done/","../csvAeon/done_except_sum/","../csvEposJiang/done/",
                         "../csvEposWang/done/","../csvBic/done/","../csv/done/",
                         "../csvLumine/done/","../csvFt/done/","../csvAeon/done_except_sum/done_all/",
                         "../csvToho/done_except_sum/","../csvToho/done_except_sum/done_all/");
