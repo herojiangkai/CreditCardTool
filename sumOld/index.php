@@ -46,6 +46,37 @@
     <meta content="width=device-width,user-scalable=no" name="viewport">
     <meta name="theme-color" content="#DCDCDC">
 
+    <script type="text/javascript">
+      function sortTime(title) {                   //title参数是所点击的表头所在的单元格对象
+          var a = title.cellIndex;                //获取其单元格在本列中的位置
+          var table = document.getElementById("tbSort").tBodies[0];  //获取到table的第一个tbody对象(当然这里只有一个)
+          var rows = table.rows;
+          var arr = new Array();                        //声明一个array对象来储存rows
+          for (var i = 0; i < rows.length; i++) {
+              arr.push(rows[i]);                              //将rows存储至array数组
+          }
+          if (table.sortFlag == a) {            //使用table对象的sortFlag属性作为排序的标记，如果这个标记等于当前列，则按此列倒序输出
+              arr.reverse();
+          }else if(a===1){                                       //内容是数字的两列
+            arr.sort(function(r1, r2) {             //使用array对象的sort函数
+                  var t1 = Number(r1.cells[a].innerHTML);　　　　　　//格式为：function(a,b){}比较a,b返回比较结果
+                  var t2 = Number(r2.cells[a].innerHTML);                 //如果a>b，则返回正整数，a=b返回0，a<b返回负整数
+                  return t1-t2;
+              });
+          }else{
+            arr.sort(function(r1, r2) {            
+                  var t1 = r1.cells[a].innerHTML;　
+                  var t2 = r2.cells[a].innerHTML;  
+                  return t1.localeCompare(t2);
+              });
+          }
+          for (var i = 0; i < arr.length; i++) {
+              table.appendChild(arr[i]);                      //将排序结果输出到table中。
+          }
+          table.sortFlag = a;
+      }
+  </script>
+
 </head>
 <body>
    <h3 align="center">過去月間集計</h3>
@@ -53,8 +84,14 @@
    <br><br>
 
    <div align="center">
-      <table border="1">
-         <tr><th>年月</th><th>総額</th></tr>
+      <table border="1"  id="tbSort">
+      <thead>
+      <tr>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">年月</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">総額</a></th>
+      </tr>
+      </thead>
+      <tbody>
 
 <?php
 while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
@@ -64,6 +101,7 @@ while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
    echo "</tr>";
 }
 ?>
+      </tbody>
       </table>
    </div>
 </body>
