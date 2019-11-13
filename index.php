@@ -35,10 +35,17 @@
     <h3 align="center">出費登録</h3>
 
     <div align="center">
-        <a href="q">クレジット入力照会</a>
-        <a href="qCash">現金入力照会</a><br><br>
-        <a href="sum">月間集計</a>
-        <a href="sumOld">過去月間集計</a>
+    <table>
+        <tr>
+            <td align="center"><a href="q">クレジット入力照会</a></td>
+            <td align="center"><a href="qCash">現金入力照会</a></td>
+        </tr>
+        <tr>
+            <td align="center"><a href="sumOld">過去集計</a></td>
+            <td align="center"><a href="sum">直近月間集計</a></td>
+        </tr>
+    </table>
+        
     </div>
     
         <div align="center">

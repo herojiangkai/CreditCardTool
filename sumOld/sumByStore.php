@@ -1,8 +1,9 @@
 <html>
 <head>
-    <title>過去月間詳細　<?php echo $_GET["yearMonth"]?></title>
+    <title>取引先別集計</title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
+    <meta content="width=device-width,user-scalable=no" name="viewport">
     <meta name="theme-color" content="#DCDCDC">
     
     <script type="text/javascript">
@@ -16,7 +17,7 @@
           }
           if (table.sortFlag == a) {            //使用table对象的sortFlag属性作为排序的标记，如果这个标记等于当前列，则按此列倒序输出
               arr.reverse();
-          }else if(a===5||a===6){                                       //内容是数字的两列
+          }else if(a>0){                                       //内容是数字的两列
             arr.sort(function(r1, r2) {             //使用array对象的sort函数
                   var t1 = Number(r1.cells[a].innerHTML);　　　　　　//格式为：function(a,b){}比较a,b返回比较结果
                   var t2 = Number(r2.cells[a].innerHTML);                 //如果a>b，则返回正整数，a=b返回0，a<b返回负整数
@@ -37,7 +38,7 @@
   </script>
 </head>
 <body>
-    <h3 align="center">過去月間詳細　<?php echo $_GET["yearMonth"]?></h3>
+    <h3 align="center">取引先別集計</h3>
     <div align="right">
         <a href="../index.php">入力画面</a>
         <a href="javascript:history.go(-1)">戻る</a>
@@ -45,18 +46,14 @@
     <div align="left">
         <a href="javascript:void(0)" onclick="location.reload()">表示順reset</a>
     </div>
+    <div align="center">
     <table border="1" id="tbSort">
     <thead>
         <tr>
-        <th onclick="sortTime(this);"><a href="javascript:void(0)">レシート・注文番号</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用日</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用時刻</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用区分</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用店名</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">分割支払回数</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用金額</a></a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">支払方法</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">備考</a></th>
+        <th onclick="sortTime(this);"><a href="javascript:void(0)">利用店名</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">総金額</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用回数</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">平均金額</a></th>
         </tr>
     </thead>
     <tbody>
@@ -74,30 +71,34 @@
            echo $db->lastErrorMsg();
         }
 
-        $sql="select * from t_credit_card_user_input_details 
-              where substr(date_of_use,0,7)='".$_GET["yearMonth"]."'
-              order by date_of_use;";
+        $sql="select
+                store_name_user_input as store,
+                sum(usage_amount) as amount,
+                count(1) as count,
+                sum(usage_amount)/count(1) as average
+            from
+                t_credit_card_user_input_details
+                --where date_of_use between 20191101 and 20191113
+                group by store
+                --having count>0
+                order by amount desc;";
 
         $ret = $db->query($sql);
-        $totalAmount=0;
+        $storeCount=0;
         while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
             echo "<tr>";
-            echo "<td>".$row['receipt_or_order_no']."</td>";
-            echo "<td>".$row['date_of_use']."</td>";
-            echo "<td>".$row['time_of_use']."</td>";
-            echo "<td>".$row['card_user']."</td>";
-            echo "<td>".$row['store_name_user_input']."</td>";
-            echo "<td>".$row['payment_split_times']."</td>";
-            echo "<td align='right'>".$row['usage_amount']."</td>";
-            echo "<td>".$row['payment_method']."</td>";
-            echo "<td>".$row['comment']."</td>";
+            echo "<td>".$row['store']."</td>";
+            echo "<td>".$row['amount']."</td>";
+            echo "<td>".$row['count']."</td>";
+            echo "<td>".$row['average']."</td>";
             echo "</tr>";
-            $totalAmount+=(int)$row['usage_amount'];
+            $storeCount+=1;
          }
         $db->close();
         echo "</tbody>";
-        echo "<tr><th></th><th></th><th></th><th></th><th></th><th align='right'>総額⇒</th><th align='right'><font color='red'>$totalAmount</font></th><th></th><th></th></tr>"
+        echo "<tr><th align='right'><font color='red'>$storeCount</font></th><th align='right'>⇐総利用店数</th><th></th><th></th></tr>"
         ?>
     </table>
+    </div>
 </body>
 </html>

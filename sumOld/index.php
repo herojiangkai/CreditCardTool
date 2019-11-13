@@ -39,11 +39,18 @@
          group by yearMonth
          order by yearMonth desc;";
    $ret = $db->query($sql);
+
+   $sql2="SELECT substr(date_of_use,0,5) as year
+               ,sum(usage_amount)      as totalAmount
+         FROM t_credit_card_user_input_details
+         group by year
+         order by year desc;";
+   $ret2 = $db->query($sql2);
    ?>
 
 <html>
 <head>
-   <title>過去月間集計</title>
+   <title>過去集計</title>
    <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta content="width=device-width,user-scalable=no" name="viewport">
@@ -52,7 +59,7 @@
     <script type="text/javascript">
       function sortTime(title) {                   //title参数是所点击的表头所在的单元格对象
           var a = title.cellIndex;                //获取其单元格在本列中的位置
-          var table = document.getElementById("tbSort").tBodies[0];  //获取到table的第一个tbody对象(当然这里只有一个)
+          var table = document.getElementById(title.parentNode.parentNode.parentNode.id).tBodies[0];  //获取到table的第一个tbody对象(当然这里只有一个)
           var rows = table.rows;
           var arr = new Array();                        //声明一个array对象来储存rows
           for (var i = 0; i < rows.length; i++) {
@@ -82,11 +89,38 @@
 
 </head>
 <body>
-   <h3 align="center">過去月間集計</h3>
+   <h3 align="center">過去集計</h3>
    <div align="right"><a href="../index.php">入力画面</a></div>
-   <br><br>
+   <div align="center"">
+      <a href="sumByStore.php">利用店別集計</a>
+      <a href="sumByUser.php">利用区分別集計</a>
+   </div>
+   <br>
 
    <div align="center">
+      <table><tr>
+      
+      <td valign="top">
+      <table border="1"  id="tbSort2">
+      <thead>
+      <tr>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">年</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">総額</a></th>
+      </tr>
+      </thead>
+      <tbody>
+
+<?php
+while($row = $ret2->fetchArray(SQLITE3_ASSOC) ){
+   echo "<tr>";
+   echo "<td>".$row['year']."</td>";
+   echo "<td align='right'>".$row['totalAmount']."</td>";
+   echo "</tr>";
+}
+?>
+      </tbody>
+      </table></td>
+      <td>
       <table border="1"  id="tbSort">
       <thead>
       <tr>
@@ -105,6 +139,8 @@ while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
 }
 ?>
       </tbody>
+      </table></td>
+      </tr>
       </table>
    </div>
 </body>
