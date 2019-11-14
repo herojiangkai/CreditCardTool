@@ -47,6 +47,12 @@
         <a href="javascript:void(0)" onclick="location.reload()">表示順reset</a>
     </div>
     <div align="center">
+    <a <?php echo !isset($_GET["option"])?"":'href="sumByStore.php"'?>>すべて</a>
+    <a <?php echo $_GET["option"]=="1y"?"":'href="sumByStore.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>直近1年</a>
+    <a <?php echo $_GET["option"]=="6m"?"":'href="sumByStore.php?option=6m&startDate='.date("Ymd",strtotime("-6 month")).'&endDate='.date("Ymd").'"'?>>直近半年</a>
+    <a <?php echo $_GET["option"]=="3m"?"":'href="sumByStore.php?option=3m&startDate='.date("Ymd",strtotime("-3 month")).'&endDate='.date("Ymd").'"'?>>直近3ヶ月</a>
+    <a <?php echo $_GET["option"]=="1m"?"":'href="sumByStore.php?option=1m&startDate='.date("Ymd",strtotime("-1 month")).'&endDate='.date("Ymd").'"'?>>直近1ヶ月</a>
+
     <table border="1" id="tbSort">
     <thead>
         <tr>
@@ -71,6 +77,21 @@
            echo $db->lastErrorMsg();
         }
 
+        $startDate="19000101";
+        $endDate="30001231";
+        $leastUseCount="0";
+
+        if(isset($_GET["startDate"])){
+            $startDate=str_replace("-","",$_GET["startDate"]);
+        }
+        if(isset($_GET["endDate"])){
+            $endDate=str_replace("-","",$_GET["endDate"]);
+        }
+        if(isset($_GET["leastUseCount"])){
+            $startDate=$_GET["leastUseCount"];
+        }
+        
+        
         $sql="select
                 store_name_user_input as store,
                 sum(usage_amount) as amount,
@@ -78,9 +99,9 @@
                 sum(usage_amount)/count(1) as average
             from
                 t_credit_card_user_input_details
-                --where date_of_use between 20191101 and 20191113
+                where date_of_use between $startDate and $endDate
                 group by store
-                --having count>0
+                having count>$leastUseCount
                 order by amount desc;";
 
         $ret = $db->query($sql);
