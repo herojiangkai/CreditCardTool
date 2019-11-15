@@ -46,6 +46,38 @@
          group by year
          order by year desc;";
    $ret2 = $db->query($sql2);
+
+   $pastDate1y=date("Ymd",strtotime("-1 year"));
+   $pastDate6m=date("Ymd",strtotime("-6 month"));
+   $pastDate3m=date("Ymd",strtotime("-3 month"));
+   $pastDate1m=date("Ymd",strtotime("-1 month"));
+
+   $sql3="SELECT '4.直近1年' as prd
+         ,sum(usage_amount)      as totalAmount
+         FROM t_credit_card_user_input_details
+         where date_of_use > $pastDate1y
+
+         union
+
+         SELECT '3.直近半年' as prd
+         ,sum(usage_amount)      as totalAmount
+         FROM t_credit_card_user_input_details
+         where date_of_use > $pastDate6m
+         
+         union
+
+         SELECT '2.直近3ヶ月' as prd
+         ,sum(usage_amount)      as totalAmount
+         FROM t_credit_card_user_input_details
+         where date_of_use > $pastDate3m
+         
+         union
+
+         SELECT '1.直近1ヶ月' as prd
+         ,sum(usage_amount)      as totalAmount
+         FROM t_credit_card_user_input_details
+         where date_of_use > $pastDate1m;";
+   $ret3 = $db->query($sql3);
    ?>
 
 <html>
@@ -92,8 +124,8 @@
    <h3 align="center">過去集計</h3>
    <div align="right"><a href="../index.php">入力画面</a></div>
    <div align="center"">
-      <a href="sumByStore.php">利用店別集計</a>
-      <a href="sumByUser.php">利用区分別集計</a>
+      <a <?php echo $_GET["option"]=="1y"?"":'href="sumByStore.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用店別集計</a>
+      <a <?php echo $_GET["option"]=="1y"?"":'href="sumByUser.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用区分別集計</a>
    </div>
    <br>
 
@@ -101,6 +133,25 @@
       <table><tr>
       
       <td valign="top">
+      <table border="1"  id="tbSort3">
+      <thead>
+      <tr>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">期間</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">総額</a></th>
+      </tr>
+      </thead>
+      <tbody>
+
+<?php
+while($row = $ret3->fetchArray(SQLITE3_ASSOC) ){
+   echo "<tr>";
+   echo "<td>".$row['prd']."</td>";
+   echo "<td align='right'>".$row['totalAmount']."</td>";
+   echo "</tr>";
+}
+?>
+      </tbody>
+      </table><br>
       <table border="1"  id="tbSort2">
       <thead>
       <tr>
@@ -113,7 +164,7 @@
 <?php
 while($row = $ret2->fetchArray(SQLITE3_ASSOC) ){
    echo "<tr>";
-   echo "<td>".$row['year']."</td>";
+   echo "<td><a href='showMonthDetails.php?yearMonth=".$row['year']."'>".$row['year']."</a></td>";
    echo "<td align='right'>".$row['totalAmount']."</td>";
    echo "</tr>";
 }

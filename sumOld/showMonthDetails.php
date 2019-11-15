@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>過去月間詳細　<?php echo $_GET["yearMonth"]?></title>
+    <title>過去詳細　<?php echo $_GET["yearMonth"]?></title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta name="theme-color" content="#DCDCDC">
@@ -37,7 +37,7 @@
   </script>
 </head>
 <body>
-    <h3 align="center">過去月間詳細　<?php echo $_GET["yearMonth"]?></h3>
+    <h3 align="center">過去詳細　<?php echo $_GET["yearMonth"]?></h3>
     <div align="right">
         <a href="../index.php">入力画面</a>
         <a href="javascript:history.go(-1)">戻る</a>
@@ -75,7 +75,7 @@
         }
 
         $sql="select * from t_credit_card_user_input_details 
-              where substr(date_of_use,0,7)='".$_GET["yearMonth"]."'
+              where date_of_use like'".$_GET["yearMonth"]."%'
               order by date_of_use;";
 
         $ret = $db->query($sql);

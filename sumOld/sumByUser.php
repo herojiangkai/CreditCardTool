@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>取引先別集計</title>
+    <title>利用区分別集計</title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta content="width=device-width,user-scalable=no" name="viewport">
@@ -38,15 +38,42 @@
   </script>
 </head>
 <body>
-    <h3 align="center">取引先別集計</h3>
+    <h3 align="center">利用区分別集計</h3>
     <div align="right">
         <a href="../index.php">入力画面</a>
-        <a href="javascript:history.go(-1)">戻る</a>
+        <a href="./">戻る</a>
     </div>
     <div align="left">
         <a href="javascript:void(0)" onclick="location.reload()">表示順reset</a>
     </div>
     <div align="center">
+    <?php 
+    $startDate="19000101";
+    $endDate="30001231";
+    $leastUseCount="1";
+
+    if(isset($_GET["startDate"])){
+        $startDate=str_replace("-","",$_GET["startDate"]);
+    }
+    if(isset($_GET["endDate"])){
+        $endDate=str_replace("-","",$_GET["endDate"]);
+    }
+    if(isset($_GET["leastUseCount"])){
+        $leastUseCount=$_GET["leastUseCount"];
+    }
+    ?>
+    <form action="sumByUser.php" method="get">
+        区間:<input type="date" name="startDate" value="<?php echo date("Y-m-d",strtotime($startDate))?>">
+        ～<input type="date" name="endDate" value="<?php echo date("Y-m-d",strtotime($endDate))?>"><br>
+        最低利用回数:<input type="number" name="leastUseCount" value="<?php echo $leastUseCount?>">
+        <input type="submit" value="検索">
+    </form>
+    <a <?php echo $_GET["option"]=="all"?"":'href="sumByUser.php?option=all"'?>>すべて</a>
+    <a <?php echo $_GET["option"]=="1y"?"":'href="sumByUser.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>直近1年</a>
+    <a <?php echo $_GET["option"]=="6m"?"":'href="sumByUser.php?option=6m&startDate='.date("Ymd",strtotime("-6 month")).'&endDate='.date("Ymd").'"'?>>直近半年</a>
+    <a <?php echo $_GET["option"]=="3m"?"":'href="sumByUser.php?option=3m&startDate='.date("Ymd",strtotime("-3 month")).'&endDate='.date("Ymd").'"'?>>直近3ヶ月</a>
+    <a <?php echo $_GET["option"]=="1m"?"":'href="sumByUser.php?option=1m&startDate='.date("Ymd",strtotime("-1 month")).'&endDate='.date("Ymd").'"'?>>直近1ヶ月</a>
+
     <table border="1" id="tbSort">
     <thead>
         <tr>
@@ -71,6 +98,9 @@
            echo $db->lastErrorMsg();
         }
 
+        
+        
+        
         $sql="select
                 card_user as user,
                 sum(usage_amount) as amount,
@@ -78,9 +108,9 @@
                 sum(usage_amount)/count(1) as average
             from
                 t_credit_card_user_input_details
-                --where date_of_use between 20191101 and 20191113
+                where date_of_use between $startDate and $endDate
                 group by user
-                --having count>0
+                having count>=$leastUseCount
                 order by amount desc;";
 
         $ret = $db->query($sql);

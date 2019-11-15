@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>取引先別集計</title>
+    <title>利用店別集計</title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta content="width=device-width,user-scalable=no" name="viewport">
@@ -38,16 +38,37 @@
   </script>
 </head>
 <body>
-    <h3 align="center">取引先別集計</h3>
+    <h3 align="center">利用店別集計</h3>
     <div align="right">
         <a href="../index.php">入力画面</a>
-        <a href="javascript:history.go(-1)">戻る</a>
+        <a href="./">戻る</a>
     </div>
     <div align="left">
         <a href="javascript:void(0)" onclick="location.reload()">表示順reset</a>
     </div>
     <div align="center">
-    <a <?php echo !isset($_GET["option"])?"":'href="sumByStore.php"'?>>すべて</a>
+    <?php 
+    $startDate="19000101";
+    $endDate="30001231";
+    $leastUseCount="1";
+
+    if(isset($_GET["startDate"])){
+        $startDate=str_replace("-","",$_GET["startDate"]);
+    }
+    if(isset($_GET["endDate"])){
+        $endDate=str_replace("-","",$_GET["endDate"]);
+    }
+    if(isset($_GET["leastUseCount"])){
+        $leastUseCount=$_GET["leastUseCount"];
+    }
+    ?>
+    <form action="sumByStore.php" method="get">
+        区間:<input type="date" name="startDate" value="<?php echo date("Y-m-d",strtotime($startDate))?>">
+        ～<input type="date" name="endDate" value="<?php echo date("Y-m-d",strtotime($endDate))?>"><br>
+        最低利用回数:<input type="number" name="leastUseCount" value="<?php echo $leastUseCount?>">
+        <input type="submit" value="検索">
+    </form>
+    <a <?php echo $_GET["option"]=="all"?"":'href="sumByStore.php?option=all"'?>>すべて</a>
     <a <?php echo $_GET["option"]=="1y"?"":'href="sumByStore.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>直近1年</a>
     <a <?php echo $_GET["option"]=="6m"?"":'href="sumByStore.php?option=6m&startDate='.date("Ymd",strtotime("-6 month")).'&endDate='.date("Ymd").'"'?>>直近半年</a>
     <a <?php echo $_GET["option"]=="3m"?"":'href="sumByStore.php?option=3m&startDate='.date("Ymd",strtotime("-3 month")).'&endDate='.date("Ymd").'"'?>>直近3ヶ月</a>
@@ -77,19 +98,7 @@
            echo $db->lastErrorMsg();
         }
 
-        $startDate="19000101";
-        $endDate="30001231";
-        $leastUseCount="0";
-
-        if(isset($_GET["startDate"])){
-            $startDate=str_replace("-","",$_GET["startDate"]);
-        }
-        if(isset($_GET["endDate"])){
-            $endDate=str_replace("-","",$_GET["endDate"]);
-        }
-        if(isset($_GET["leastUseCount"])){
-            $startDate=$_GET["leastUseCount"];
-        }
+        
         
         
         $sql="select
@@ -101,7 +110,7 @@
                 t_credit_card_user_input_details
                 where date_of_use between $startDate and $endDate
                 group by store
-                having count>$leastUseCount
+                having count>=$leastUseCount
                 order by amount desc;";
 
         $ret = $db->query($sql);
