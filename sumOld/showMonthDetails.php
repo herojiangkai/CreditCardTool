@@ -74,9 +74,19 @@
            echo $db->lastErrorMsg();
         }
 
-        $sql="select * from t_credit_card_user_input_details 
+        if(isset($_GET["store"])){
+            $sql="select * from t_credit_card_user_input_details 
+              where store_name_user_input ='".$_GET["store"]."'
+              order by date_of_use;";
+        }else if(isset($_GET["user"])){
+            $sql="select * from t_credit_card_user_input_details 
+              where card_user ='".$_GET["user"]."'
+              order by date_of_use;";
+        }else{
+            $sql="select * from t_credit_card_user_input_details 
               where date_of_use like'".$_GET["yearMonth"]."%'
               order by date_of_use;";
+        }
 
         $ret = $db->query($sql);
         $totalAmount=0;

@@ -117,7 +117,10 @@
         $storeCount=0;
         while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
             echo "<tr>";
-            echo "<td>".$row['store']."</td>";
+
+            echo "<td><a href='showMonthDetails.php?store=".$row['store']."'>".$row['store']."</a></td>";
+
+            //echo "<td>".$row['store']."</td>";
             echo "<td>".$row['amount']."</td>";
             echo "<td>".$row['count']."</td>";
             echo "<td>".$row['average']."</td>";
