@@ -126,6 +126,7 @@
    <div align="center"">
       <a <?php echo 'href="sumByStore.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用店別集計</a>
       <a <?php echo 'href="sumByUser.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用区分別集計</a>
+      <a href="searchDetails.php">明細検索</a>
    </div>
    <br>
 

@@ -1,13 +1,38 @@
 <?php 
 
+
 $startDate="19000101";
 $endDate="30001231";
+$store="";
+$startAmount="-999999999";
+$endAmount="999999999";
+$users="''";
+$paymentMethod="";
+$comment="";
 
-if(isset($_GET["startDate"])){
+if(strlen($_GET["startDate"])>0){
     $startDate=str_replace("-","",$_GET["startDate"]);
 }
-if(isset($_GET["endDate"])){
+if(strlen($_GET["endDate"])>0){
     $endDate=str_replace("-","",$_GET["endDate"]);
+}
+if(isset($_GET["store"])){
+    $store=str_replace("'","''",$_GET["store"]);
+}
+if(strlen($_GET["startAmount"])>0){
+    $startAmount=$_GET["startAmount"];
+}
+if(strlen($_GET["endAmount"])>0){
+    $endAmount=$_GET["endAmount"];
+}
+if(isset($_GET["users"])){
+    $users="'".implode("','",$_GET["users"])."'";
+}
+if(isset($_GET["paymentMethod"])){
+    $paymentMethod=str_replace("'","''",$_GET["paymentMethod"]);
+}
+if(isset($_GET["comment"])){
+    $comment=str_replace("'","''",$_GET["comment"]);
 }
 
 
@@ -90,7 +115,16 @@ if(isset($_GET["endDate"])){
            echo $db->lastErrorMsg();
         }
 
-        if(isset($_GET["store"])){
+        if(isset($_GET["action"])){
+            $sql="select * from t_credit_card_user_input_details 
+              where date_of_use between $startDate and $endDate
+              and store_name_user_input like '%$store%'
+              and usage_amount between $startAmount and $endAmount
+              and card_user in ($users)
+              and payment_method like '%$paymentMethod%'
+              and comment like '%$comment%'
+              order by date_of_use desc;";
+        }else if(isset($_GET["store"])){
             $sql="select * from t_credit_card_user_input_details 
               where store_name_user_input ='".$_GET["store"]."'
               and date_of_use between $startDate and $endDate

@@ -63,7 +63,7 @@
     }
     ?>
     <form action="sumByStore.php" method="get">
-        区間:<input type="date" name="startDate" value="<?php echo date("Y-m-d",strtotime($startDate))?>">
+        期間:<input type="date" name="startDate" value="<?php echo date("Y-m-d",strtotime($startDate))?>">
         ～<input type="date" name="endDate" value="<?php echo date("Y-m-d",strtotime($endDate))?>"><br>
         最低利用回数:<input type="number" name="leastUseCount" value="<?php echo $leastUseCount?>">
         <input type="submit" value="検索">
