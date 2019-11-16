@@ -1,6 +1,20 @@
+<?php 
+
+$startDate="19000101";
+$endDate="30001231";
+
+if(isset($_GET["startDate"])){
+    $startDate=str_replace("-","",$_GET["startDate"]);
+}
+if(isset($_GET["endDate"])){
+    $endDate=str_replace("-","",$_GET["endDate"]);
+}
+
+
+?>
 <html>
 <head>
-    <title>過去詳細　<?php echo $_GET["yearMonth"]?></title>
+    <title>過去詳細　<?php echo isset($_GET["yearMonth"])?$_GET["yearMonth"]:(isset($_GET["store"])?$_GET["store"]:$_GET["user"])." $startDate~$endDate"?></title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta name="theme-color" content="#DCDCDC">
@@ -37,7 +51,7 @@
   </script>
 </head>
 <body>
-    <h3 align="center">過去詳細　<?php echo $_GET["yearMonth"]?></h3>
+    <h3 align="center">過去詳細　<?php echo isset($_GET["yearMonth"])?$_GET["yearMonth"]:(isset($_GET["store"])?$_GET["store"]:$_GET["user"])." $startDate~$endDate"?></h3>
     <div align="right">
         <a href="../index.php">入力画面</a>
         <a href="javascript:history.go(-1)">戻る</a>
@@ -68,6 +82,8 @@
               $this->open('totalAmountTransaction.db');
            }
         }
+
+
      
         $db = new MyDB();
         if(!$db){
@@ -77,10 +93,12 @@
         if(isset($_GET["store"])){
             $sql="select * from t_credit_card_user_input_details 
               where store_name_user_input ='".$_GET["store"]."'
+              and date_of_use between $startDate and $endDate
               order by date_of_use desc;";
         }else if(isset($_GET["user"])){
             $sql="select * from t_credit_card_user_input_details 
               where card_user ='".$_GET["user"]."'
+              and date_of_use between $startDate and $endDate
               order by date_of_use desc;";
         }else{
             $desc=strlen($_GET["yearMonth"])==4?"desc":"";
