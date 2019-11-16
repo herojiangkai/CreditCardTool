@@ -124,8 +124,8 @@
    <h3 align="center">過去集計</h3>
    <div align="right"><a href="../index.php">入力画面</a></div>
    <div align="center"">
-      <a <?php echo $_GET["option"]=="1y"?"":'href="sumByStore.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用店別集計</a>
-      <a <?php echo $_GET["option"]=="1y"?"":'href="sumByUser.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用区分別集計</a>
+      <a <?php echo 'href="sumByStore.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用店別集計</a>
+      <a <?php echo 'href="sumByUser.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用区分別集計</a>
    </div>
    <br>
 
