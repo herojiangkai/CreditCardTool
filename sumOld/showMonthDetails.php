@@ -77,15 +77,16 @@
         if(isset($_GET["store"])){
             $sql="select * from t_credit_card_user_input_details 
               where store_name_user_input ='".$_GET["store"]."'
-              order by date_of_use;";
+              order by date_of_use desc;";
         }else if(isset($_GET["user"])){
             $sql="select * from t_credit_card_user_input_details 
               where card_user ='".$_GET["user"]."'
-              order by date_of_use;";
+              order by date_of_use desc;";
         }else{
+            $desc=strlen($_GET["yearMonth"])==4?"desc":"";
             $sql="select * from t_credit_card_user_input_details 
               where date_of_use like'".$_GET["yearMonth"]."%'
-              order by date_of_use;";
+              order by date_of_use $desc;";
         }
 
         $ret = $db->query($sql);
