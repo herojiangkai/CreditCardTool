@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>クレジット　<?php echo $_POST["csvFileName"]?></title>
+    <title><?php echo $_POST["cardTypeName"]." ".$_POST["csvFileName"]?></title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta name="theme-color" content="#ffd700">
@@ -37,7 +37,7 @@
   </script>
 </head>
 <body>
-    <h3 align="center">クレジット　<?php echo $_POST["csvFileName"]?></h3>
+    <h3 align="center"><?php echo $_POST["cardTypeName"]." ".$_POST["csvFileName"]?></h3>
     <div align="right">
         <a href="../index.php">入力画面</a>
         <a href="../q/">クレジット入力照会</a>

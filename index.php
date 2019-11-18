@@ -37,8 +37,8 @@
     <div align="center">
     <table>
         <tr>
-            <td align="center"><a href="q">クレジット入力照会</a></td>
-            <td align="center"><a href="qCash">現金入力照会</a></td>
+            <td></td>
+            <td align="center"><a href="q">入力照会・変更</a></td>
         </tr>
         <tr>
             <td align="center"><a href="sumOld">過去集計</a></td>
