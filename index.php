@@ -8,7 +8,7 @@
     <meta content="width=device-width,user-scalable=no" name="viewport">
     <meta name="theme-color" content="#8a2be2">
     <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="bookmark"href="/favicon.ico" />
+    <link rel="bookmark" href="/favicon.ico" />
     <script type="text/javascript">
         function checkAndSubmit() {
             if(document.getElementById("usedDate").value==""){
@@ -37,11 +37,8 @@
     <div align="center">
     <table>
         <tr>
-            <td></td>
-            <td align="center"><a href="q">入力照会・変更</a></td>
-        </tr>
-        <tr>
             <td align="center"><a href="sumOld">過去集計</a></td>
+            <td align="center"><a href="q">入力照会・変更</a></td>
             <td align="center"><a href="sum">直近月間集計</a></td>
         </tr>
     </table>

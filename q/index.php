@@ -30,7 +30,7 @@
 
 function printCsvFileList($cardTypeName,$folderPath){
     echo "<tr><td>$cardTypeName</td><td><br>";
-    echo '<form method= "post" action="showCsvDetails.php">';
+    echo '<form method= "get" action="showCsvDetails.php">';
     echo '<input type="hidden" name="cardTypeName" value="'.$cardTypeName.'">';
     echo '<input type="hidden" name="folderPath" value="'.$folderPath.'">';
     $file=scandir($folderPath);

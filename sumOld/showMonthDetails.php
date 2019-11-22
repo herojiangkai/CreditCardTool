@@ -10,19 +10,19 @@ $users="''";
 $paymentMethod="";
 $comment="";
 
-if(strlen($_GET["startDate"])>0){
+if(isset($_GET["startDate"])&&strlen($_GET["startDate"])>0){
     $startDate=str_replace("-","",$_GET["startDate"]);
 }
-if(strlen($_GET["endDate"])>0){
+if(isset($_GET["endDate"])&&strlen($_GET["endDate"])>0){
     $endDate=str_replace("-","",$_GET["endDate"]);
 }
 if(isset($_GET["store"])){
     $store=str_replace("'","''",$_GET["store"]);
 }
-if(strlen($_GET["startAmount"])>0){
+if(isset($_GET["startAmount"])&&strlen($_GET["startAmount"])>0){
     $startAmount=$_GET["startAmount"];
 }
-if(strlen($_GET["endAmount"])>0){
+if(isset($_GET["endAmount"])&&strlen($_GET["endAmount"])>0){
     $endAmount=$_GET["endAmount"];
 }
 if(isset($_GET["users"])){
