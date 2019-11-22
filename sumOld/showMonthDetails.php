@@ -143,8 +143,14 @@ if(isset($_GET["comment"])){
 
         $ret = $db->query($sql);
         $totalAmount=0;
+        $lastDate="";
+        $bgcolor="";
+        $bgcolorChangeCount=0;
         while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
-            echo "<tr>";
+            if($row['date_of_use']!=$lastDate){
+                $bgcolor=changeBgcolor($bgcolorChangeCount++);
+            }
+            echo "<tr $bgcolor>";
             echo "<td>".$row['receipt_or_order_no']."</td>";
             echo "<td>".$row['date_of_use']."</td>";
             echo "<td>".$row['time_of_use']."</td>";
@@ -156,10 +162,20 @@ if(isset($_GET["comment"])){
             echo "<td>".$row['comment']."</td>";
             echo "</tr>";
             $totalAmount+=(int)$row['usage_amount'];
+            
+            $lastDate=$row['date_of_use'];
          }
         $db->close();
         echo "</tbody>";
-        echo "<tr><th></th><th></th><th></th><th></th><th></th><th align='right'>総額⇒</th><th align='right'><font color='red'>$totalAmount</font></th><th></th><th></th></tr>"
+        echo "<tr><th></th><th></th><th></th><th></th><th></th><th align='right'>総額⇒</th><th align='right'><font color='red'>$totalAmount</font></th><th></th><th></th></tr>";
+        
+        function changeBgcolor($bgcolorChangeCount){
+            if($bgcolorChangeCount%2==0){
+                return 'bgcolor="#CCFF99"';
+            }else{
+                return "";
+            }
+        }
         ?>
     </table>
 </body>
