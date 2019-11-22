@@ -40,7 +40,7 @@
 
 <html>
 <head>
-   <title>月間集計</title>
+   <title>直近月間集計</title>
    <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta content="width=device-width,user-scalable=no" name="viewport">
@@ -48,7 +48,7 @@
 
 </head>
 <body>
-   <h3 align="center">月間集計</h3>
+   <h3 align="center">直近月間集計</h3>
    <div align="right"><a href="../index.php">入力画面</a></div>
    <br><br>
 
