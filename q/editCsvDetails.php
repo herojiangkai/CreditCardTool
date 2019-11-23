@@ -45,16 +45,16 @@
     <table border="1" id="tbSort">
     <thead>
         <tr>
-            <th>行No.</th>
-            <th>レシート・注文番号</th>
-            <th>利用日</th>
-            <th>利用時刻</th>
-            <th>利用区分</th>
-            <th>利用店名</th>
-            <th>分割支払回数</th>
-            <th>利用金額</th>
-            <th>支払方法</th>
-            <th>備考</th>
+            <th style ='width:3%'>行No.</th>
+            <th style ='width:8%'>レシート・注文番号</th>
+            <th style ='width:8%'>利用日</th>
+            <th style ='width:7%'>利用時刻</th>
+            <th style ='width:14%'>利用区分</th>
+            <th style ='width:16%'>利用店名</th>
+            <th style ='width:4%'>分割支払回数</th>
+            <th style ='width:8%'>利用金額</th>
+            <th style ='width:9%'>支払方法</th>
+            <th style ='width:23%'>備考</th>
         </tr>
     </thead>
     <tbody>
@@ -81,10 +81,10 @@
                 $comment= substr($currentColums[8],0,-3);
                 echo "<tr>";
                 echo "<td align='right'>$lineNumber</td>";
-                echo "<td><input type='text' value='$receiptNo' name='receiptNo_$lineNumber' id='receiptNo_$lineNumber'></td>";
-                echo "<td><input type='date' value='$usedDate' name='usedDate_$lineNumber' id='usedDate_$lineNumber'></td>";
-                echo "<td><input type='number' value='$usedTime' name='usedTime_$lineNumber' id='usedTime_$lineNumber' oninput='if(value.length>6)value=value.slice(0,6)' onblur='if(value.length==4)value=value+\"00\"'></td>";
-                echo "<td><select name='user_$lineNumber' id='user_$lineNumber'>";
+                echo "<td><input type='text' value='$receiptNo' name='receiptNo_$lineNumber' id='receiptNo_$lineNumber' style ='width:100%'></td>";
+                echo "<td><input type='date' value='$usedDate' name='usedDate_$lineNumber' id='usedDate_$lineNumber' style ='width:100%'></td>";
+                echo "<td><input type='number' value='$usedTime' name='usedTime_$lineNumber' id='usedTime_$lineNumber' oninput='if(value.length>6)value=value.slice(0,6)' onblur='if(value.length==4)value=value+\"00\"' style ='width:100%'></td>";
+                echo "<td><select name='user_$lineNumber' id='user_$lineNumber' style ='width:100%'>";
                     printSelection("現金(姜)","現金(姜)",$user);
                     printSelection("現金(王)","現金(王)",$user);
                     printSelection("aeon_姜(9705)","イオン_姜(9705)",$user);
@@ -98,11 +98,11 @@
                     printSelection("ft(8518)","ファミマT(8518)",$user);
                     printSelection("toho(8000)","TOHO(8000)",$user);
                 echo "</select></td>";
-                echo "<td><input type='text' value='$storeName' name='storeName_$lineNumber' id='storeName_$lineNumber'></td>";
-                echo "<td><input type='number' value='$paymentSplitTimes' name='paymentSplitTimes_$lineNumber' id='paymentSplitTimes_$lineNumber'></td>";
-                echo "<td><input type='number' value='$amount' name='amount_$lineNumber' id='amount_$lineNumber'></td>";
-                echo "<td><input type='text' value='$paymentMethod' name='paymentMethod_$lineNumber' id='paymentMethod_$lineNumber'></td>";
-                echo "<td><input type='text' value='$comment' name='comment_$lineNumber' id='comment_$lineNumber'></td>";
+                echo "<td><input type='text' value='$storeName' name='storeName_$lineNumber' id='storeName_$lineNumber' style ='width:100%'></td>";
+                echo "<td><input type='number' value='$paymentSplitTimes' name='paymentSplitTimes_$lineNumber' id='paymentSplitTimes_$lineNumber' style ='width:100%'></td>";
+                echo "<td><input type='number' value='$amount' name='amount_$lineNumber' id='amount_$lineNumber' style ='width:100%'></td>";
+                echo "<td><input type='text' value='$paymentMethod' name='paymentMethod_$lineNumber' id='paymentMethod_$lineNumber' style ='width:100%'></td>";
+                echo "<td><input type='text' value='$comment' name='comment_$lineNumber' id='comment_$lineNumber' style ='width:100%'></td>";
                 echo "</tr>";
             }
         }
