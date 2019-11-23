@@ -100,7 +100,7 @@
                 echo "</select></td>";
                 echo "<td><input type='text' value='$storeName' name='storeName_$lineNumber' id='storeName_$lineNumber' style ='width:100%'></td>";
                 echo "<td><input type='number' value='$paymentSplitTimes' name='paymentSplitTimes_$lineNumber' id='paymentSplitTimes_$lineNumber' style ='width:100%'></td>";
-                echo "<td><input type='number' value='$amount' name='amount_$lineNumber' id='amount_$lineNumber' style ='width:100%'></td>";
+                echo "<td><input type='number' value='$amount' name='amount_$lineNumber' id='amount_$lineNumber' style ='width:100%;text-align:right'></td>";
                 echo "<td><input type='text' value='$paymentMethod' name='paymentMethod_$lineNumber' id='paymentMethod_$lineNumber' style ='width:100%'></td>";
                 echo "<td><input type='text' value='$comment' name='comment_$lineNumber' id='comment_$lineNumber' style ='width:100%'></td>";
                 echo "</tr>";
