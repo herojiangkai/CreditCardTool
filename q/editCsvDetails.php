@@ -28,13 +28,15 @@
                 }
             }
             if(errCount==0){
-                document.getElementById("editCsvDetails").submit();
+                if(confirm("保存してよろしいですか？")){
+                    document.getElementById("editCsvDetails").submit();
+                }
             }
         }
     </script>
 </head>
 <body>
-    <h3 align="center">【編集】<?php echo $cardTypeName." ".$csvFileName?></h3>
+    <h3 align="center">【編集】<?php echo $cardTypeName."　　".$csvFileName?></h3>
     <div align="right">
         <a href="../index.php">入力画面</a>
         <a href="../q/">入力照会・変更</a>
@@ -115,8 +117,9 @@
 
     </table><br>
     <div align="center">
-    <input type="reset" value="リセット">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-<?php echo "<input type='button' value='　保存　' onclick='checkAndSubmit($lineNumber)'>"?>
+    <input type="reset" value="リセット" style="width:15%;height:100px">
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<?php echo "<input type='button' value='保存' onclick='checkAndSubmit($lineNumber)' style='width:15%;height:100px'>"?>
     </div>
     </form>
 </body>
