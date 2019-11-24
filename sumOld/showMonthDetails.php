@@ -84,22 +84,8 @@ if(isset($_GET["comment"])){
     <div align="left">
         <a href="javascript:void(0)" onclick="location.reload()">表示順reset</a>
     </div>
-    <table border="1" id="tbSort">
-    <thead>
-        <tr>
-        <th onclick="sortTime(this);"><a href="javascript:void(0)">レシート・注文番号</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用日</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用時刻</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用区分</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用店名</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">分割支払回数</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用金額</a></a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">支払方法</a></th>
-            <th onclick="sortTime(this);"><a href="javascript:void(0)">備考</a></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
+    <div align="center">
+      <?php
         class MyDB extends SQLite3
         {
            function __construct()
@@ -107,8 +93,6 @@ if(isset($_GET["comment"])){
               $this->open('totalAmountTransaction.db');
            }
         }
-
-
      
         $db = new MyDB();
         if(!$db){
@@ -142,6 +126,31 @@ if(isset($_GET["comment"])){
         }
 
         $ret = $db->query($sql);
+
+        $rowCnt =0;
+        while($ret->fetchArray(SQLITE3_ASSOC)){
+            $rowCnt++;
+        }
+        echo "<font color='red'>$rowCnt</font>件の検索結果";
+      ?>
+    </div>
+    <table border="1" id="tbSort">
+    <thead>
+        <tr>
+        <th onclick="sortTime(this);"><a href="javascript:void(0)">レシート・注文番号</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用日</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用時刻</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用区分</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用店名</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">分割支払回数</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">利用金額</a></a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">支払方法</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">備考</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        
         $totalAmount=0;
         $lastDate="";
         $bgcolor="";
