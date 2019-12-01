@@ -127,7 +127,7 @@
         <div align="center">
             <input type="button" onclick="checkAndSubmit()" value="     登録     ">
             <br><br>
-            <input type="reset" value="クリア">
+            <input type="reset" value="クリア" onclick="showOffPct('')">
         </div>
         
         
