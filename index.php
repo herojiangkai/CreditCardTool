@@ -19,8 +19,28 @@
                 alert("利用金額を入力してください。");
             }else if(document.getElementById("user").value==""){
                 alert("利用区分を選択してください。");
+            }else if(document.getElementById("user").value=="lumine(7914)"){
+                rdo=document.getElementsByName("offPct");
+                checkCount=0;
+                for(i=0;i<rdo.length;i++){
+                    if(rdo[i].checked){
+                        checkCount++;
+                    } 
+                }
+                if(checkCount==0){
+                    alert("割引を選択してください。");
+                }else{
+                    document.getElementById("creditInputForm").submit();
+                }
             }else{
                 document.getElementById("creditInputForm").submit();
+            }
+        }
+        function showOffPct(value){
+            if(value=="lumine(7914)"){
+                document.getElementById("offPctDiv").style.display="";
+            }else{
+                document.getElementById("offPctDiv").style.display="none";
             }
         }
     </script>
@@ -71,7 +91,7 @@
             <tr><td><input type="number" name="amount" id="amount"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用区分:</td></tr>
             <tr>
-                <td><select name="user" id="user">
+                <td><select name="user" id="user" onchange="showOffPct(this.value)">
                     <option value="" selected>ーー</option>
                     <option value="現金(姜)">現金(姜)</option>
                     <option value="現金(王)">現金(王)</option>
@@ -87,6 +107,14 @@
                     <option value="toho(8000)">TOHO(8000)</option>                    
                 </select><span style="color:red">(選択間違い注意)</span></td>
             </tr>
+            <tr><td>
+                <div style="display:none;background:yellow" id="offPctDiv">割引:<br>
+                    <input type="radio" name="offPct" value="0">0%
+                    <input type="radio" name="offPct" value="5">5%
+                    <input type="radio" name="offPct" value="10">10%
+                    <span style="color:red">(必須)</span>
+                </div>
+            </td></tr>
             <tr><td>分割支払回数:</td></tr>
             <tr><td><input type="number" value="1" name="paymentSplitTimes"><span style="color:red">(必須)</span></td></tr>
             <tr><td>支払方法:</td></tr>

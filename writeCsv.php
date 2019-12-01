@@ -12,6 +12,12 @@ $amount= $_POST["amount"] ;
 $paymentMethod= $_POST["paymentMethod"] ;
 $comment= $_POST["comment"] ;
 
+if(strpos($user, "lumine")!==false){
+    $offPct=$_POST["offPct"];
+    $comment=$amount."円より$offPct%割引 ".$comment;
+    $amount=ceil($amount*(100-$offPct)/100);
+}
+
 $csvText=array($receiptNo,$usedDate,$usedTime,$user,$storeName,$paymentSplitTimes,$amount,$paymentMethod,$comment);
 $csvText=addDoubleQuotationForElements($csvText);
 
