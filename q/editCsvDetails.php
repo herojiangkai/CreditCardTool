@@ -13,18 +13,23 @@
     <script type="text/javascript">
         function checkAndSubmit(lineNumber) {
             errCount=0;
-            for(i=1;i<lineNumber;i++){
-                if(document.getElementById("usedDate"+"_"+i).value==""){
-                     alert(i+"行目の利用日を入力してください。");
-                     errCount++;
-                }
-                if(document.getElementById("storeName"+"_"+i).value==""){
-                    alert(i+"行目の利用店名を入力してください。");
-                    errCount++;
-                }
-                if(document.getElementById("amount"+"_"+i).value==""){
-                    alert(i+"行目の利用金額を入力してください。");
-                    errCount++;
+            if(lineNumber>111){
+                alert("111件以上の経費がある場合は編集できません。システム管理者に編集依頼してください。");
+                errCount++;
+            }else{
+                for(i=1;i<lineNumber;i++){
+                    if(document.getElementById("usedDate"+"_"+i).value==""){
+                        alert(i+"行目の利用日を入力してください。");
+                        errCount++;
+                    }
+                    if(document.getElementById("storeName"+"_"+i).value==""){
+                        alert(i+"行目の利用店名を入力してください。");
+                        errCount++;
+                    }
+                    if(document.getElementById("amount"+"_"+i).value==""){
+                        alert(i+"行目の利用金額を入力してください。");
+                        errCount++;
+                    }
                 }
             }
             if(errCount==0){
@@ -67,8 +72,12 @@
         $csvFilePath=$folderPath.$csvFileName;
         $csvFile = fopen($csvFilePath, "r") or die("Unable to open csv file-> ".$csvFilePath);
         $lineNumber=0;
+        $bgcolor="";
         while(!feof($csvFile)) {
             $lineNumber+=1;
+            if($lineNumber>110){
+                $bgcolor='bgcolor="orange"';
+            }
             $currentLine=fgets($csvFile);
             $currentColums=explode('","',$currentLine);
             if(sizeof($currentColums)>1){
@@ -81,7 +90,7 @@
                 $amount= $currentColums[6] ;
                 $paymentMethod= $currentColums[7] ;
                 $comment= substr($currentColums[8],0,-3);
-                echo "<tr>";
+                echo "<tr $bgcolor>";
                 echo "<td align='right'>$lineNumber</td>";
                 echo "<td><input type='text' value='$receiptNo' name='receiptNo_$lineNumber' id='receiptNo_$lineNumber' style ='width:100%'></td>";
                 echo "<td><input type='date' value='$usedDate' name='usedDate_$lineNumber' id='usedDate_$lineNumber' style ='width:100%'></td>";
