@@ -35,6 +35,7 @@
 
    $sql="SELECT substr(date_of_use,0,7) as yearMonth
                ,sum(usage_amount)      as totalAmount
+               ,count(1) as numberOfEntries
          FROM t_credit_card_user_input_details
          group by yearMonth
          order by yearMonth desc;";
@@ -42,6 +43,7 @@
 
    $sql2="SELECT substr(date_of_use,0,5) as year
                ,sum(usage_amount)      as totalAmount
+               ,count(1) as numberOfEntries
          FROM t_credit_card_user_input_details
          group by year
          order by year desc;";
@@ -54,6 +56,7 @@
 
    $sql3="SELECT '4.直近1年' as prd
          ,sum(usage_amount)      as totalAmount
+         ,count(1) as numberOfEntries
          FROM t_credit_card_user_input_details
          where date_of_use > $pastDate1y
 
@@ -61,6 +64,7 @@
 
          SELECT '3.直近半年' as prd
          ,sum(usage_amount)      as totalAmount
+         ,count(1) as numberOfEntries
          FROM t_credit_card_user_input_details
          where date_of_use > $pastDate6m
          
@@ -68,6 +72,7 @@
 
          SELECT '2.直近3ヶ月' as prd
          ,sum(usage_amount)      as totalAmount
+         ,count(1) as numberOfEntries
          FROM t_credit_card_user_input_details
          where date_of_use > $pastDate3m
          
@@ -75,6 +80,7 @@
 
          SELECT '1.直近1ヶ月' as prd
          ,sum(usage_amount)      as totalAmount
+         ,count(1) as numberOfEntries
          FROM t_credit_card_user_input_details
          where date_of_use > $pastDate1m;";
    $ret3 = $db->query($sql3);
@@ -139,6 +145,7 @@
       <tr>
             <th onclick="sortTime(this);"><a href="javascript:void(0)">期間</a></th>
             <th onclick="sortTime(this);"><a href="javascript:void(0)">総額</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">明細数</a></th>
       </tr>
       </thead>
       <tbody>
@@ -148,6 +155,7 @@ while($row = $ret3->fetchArray(SQLITE3_ASSOC) ){
    echo "<tr>";
    echo "<td>".$row['prd']."</td>";
    echo "<td align='right'>".$row['totalAmount']."</td>";
+   echo "<td align='right'>".$row['numberOfEntries']."</td>";
    echo "</tr>";
 }
 ?>
@@ -158,6 +166,7 @@ while($row = $ret3->fetchArray(SQLITE3_ASSOC) ){
       <tr>
             <th onclick="sortTime(this);"><a href="javascript:void(0)">年</a></th>
             <th onclick="sortTime(this);"><a href="javascript:void(0)">総額</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">明細数</a></th>
       </tr>
       </thead>
       <tbody>
@@ -167,6 +176,7 @@ while($row = $ret2->fetchArray(SQLITE3_ASSOC) ){
    echo "<tr>";
    echo "<td><a href='showMonthDetails.php?yearMonth=".$row['year']."'>".$row['year']."</a></td>";
    echo "<td align='right'>".$row['totalAmount']."</td>";
+   echo "<td align='right'>".$row['numberOfEntries']."</td>";
    echo "</tr>";
 }
 ?>
@@ -178,6 +188,7 @@ while($row = $ret2->fetchArray(SQLITE3_ASSOC) ){
       <tr>
             <th onclick="sortTime(this);"><a href="javascript:void(0)">年月</a></th>
             <th onclick="sortTime(this);"><a href="javascript:void(0)">総額</a></th>
+            <th onclick="sortTime(this);"><a href="javascript:void(0)">明細数</a></th>
       </tr>
       </thead>
       <tbody>
@@ -187,6 +198,7 @@ while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
    echo "<tr>";
    echo "<td><a href='showMonthDetails.php?yearMonth=".$row['yearMonth']."'>".$row['yearMonth']."</a></td>";
    echo "<td align='right'>".$row['totalAmount']."</td>";
+   echo "<td align='right'>".$row['numberOfEntries']."</td>";
    echo "</tr>";
 }
 ?>
