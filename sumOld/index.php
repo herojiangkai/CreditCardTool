@@ -105,7 +105,7 @@
           }
           if (table.sortFlag == a) {            //使用table对象的sortFlag属性作为排序的标记，如果这个标记等于当前列，则按此列倒序输出
               arr.reverse();
-          }else if(a===1){                                       //内容是数字的两列
+          }else if(a===1||a===2){                                       //内容是数字的两列
             arr.sort(function(r1, r2) {             //使用array对象的sort函数
                   var t1 = Number(r1.cells[a].innerHTML);　　　　　　//格式为：function(a,b){}比较a,b返回比较结果
                   var t2 = Number(r2.cells[a].innerHTML);                 //如果a>b，则返回正整数，a=b返回0，a<b返回负整数
