@@ -96,7 +96,9 @@
         $bgcolor="";
         $bgcolorChangeCount=0;
         while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
-            if($row['date_of_use']!=$lastDate){
+            if($row['date_of_use']==date("Ymd")){
+                $bgcolor='bgcolor="yellow"';
+            }else if($row['date_of_use']!=$lastDate){
                 $bgcolor=changeBgcolor($bgcolorChangeCount++);
             }
             echo "<tr $bgcolor>";
