@@ -32,6 +32,7 @@
 
    $sql="SELECT substr(date_of_use,0,7) as yearMonth
                ,sum(usage_amount)      as totalAmount
+               ,count(1) as numberOfEntries
          FROM t_credit_card_user_input_details
          group by yearMonth
          order by yearMonth;";
@@ -54,13 +55,14 @@
 
    <div align="center">
       <table border="1">
-         <tr><th>年月</th><th>総額</th></tr>
+         <tr><th>年月</th><th>総額</th><th><a>明細数</a></th></tr>
 
 <?php
 while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
    echo "<tr>";
    echo "<td><a href='showMonthDetails.php?yearMonth=".$row['yearMonth']."'>".$row['yearMonth']."</a></td>";
    echo "<td align='right'>".$row['totalAmount']."</td>";
+   echo "<td align='right'>".$row['numberOfEntries']."</td>";
    echo "</tr>";
 }
 ?>
