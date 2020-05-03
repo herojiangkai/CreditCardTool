@@ -48,7 +48,7 @@
         <a href="javascript:history.go(-1)">戻る</a><br><br>
 
     </div>
-    <form action="moveAndSaveCsv.php" method="post" id="editCsvDetails">
+    <form action="moveAndSaveCsv.php" method="post" id="editCsvDetails" autocomplete="on">
     <table border="1" id="tbSort">
     <thead>
         <tr>

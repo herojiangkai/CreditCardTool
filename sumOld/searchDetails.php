@@ -31,7 +31,7 @@
 </div>
 
 <div align="center">
-<form  action="showMonthDetails.php" method="get">
+<form  action="showMonthDetails.php" method="get" autocomplete="on">
 <input type="hidden" name="action" value="search">
 
 <table>

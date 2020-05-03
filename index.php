@@ -76,7 +76,7 @@
             </span>
         </div>
     <br>
-    <form method= "post" action="writeCsv.php" id="creditInputForm">
+    <form method= "post" action="writeCsv.php" id="creditInputForm" autocomplete="on">
         <table align="center">
             <tr><td>レシート・注文番号:</td></tr>
             <tr><td><input type="text" name="receiptNo"></td></tr>
