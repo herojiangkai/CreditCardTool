@@ -9,6 +9,11 @@
     <meta name="theme-color" content="#8a2be2">
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="bookmark" href="/favicon.ico" />
+
+    <link rel="stylesheet" href="jquery/jquery-ui-1.12.1.custom/jquery-ui.css" />
+    <script src="jquery/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="jquery/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+
     <script type="text/javascript">
         function checkAndSubmit() {
             if(document.getElementById("usedDate").value==""){
@@ -43,14 +48,67 @@
                 document.getElementById("offPctDiv").style.display="none";
             }
         }
+        function showStoreNames() {
+            $("#storeName").autocomplete({
+                minLength: 0,
+                source: "forAjax/getStoreNames.php",
+                focus: function () {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $this = $(this);
+                    setTimeout(function () {
+                        $this.blur();
+                    }, 1);
+                }
+            }).focus(function () {
+                $(this).autocomplete("search");//姜メモ:ここは「search」固定
+                return false;
+            }
+            );
+        };
+        function showPaymentMethods() {
+            $("#paymentMethod").autocomplete({
+                minLength: 0,
+                source: "forAjax/getPaymentMethods.php",
+                focus: function () {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $this = $(this);
+                    setTimeout(function () {
+                        $this.blur();
+                    }, 1);
+                }
+            }).focus(function () {
+                $(this).autocomplete("search");//姜メモ:ここは「search」固定
+                return false;
+            }
+            );
+        };
+        function showComments() {
+            $("#comment").autocomplete({
+                minLength: 0,
+                source: "forAjax/getComments.php",
+                focus: function () {
+                    return false;
+                },
+                select: function (event, ui) {
+                    $this = $(this);
+                    setTimeout(function () {
+                        $this.blur();
+                    }, 1);
+                }
+            }).focus(function () {
+                $(this).autocomplete("search");//姜メモ:ここは「search」固定
+                return false;
+            }
+            );
+        };
     </script>
 </head>
 
-<body>
-    <!-- <div align="right">
-        <input type="button" value="メニュー">
-        <input type="button" value="精算画面">
-    </div> -->
+<body onload="showStoreNames();showPaymentMethods();showComments();">
 
     <h3 align="center">出費登録</h3>
 
@@ -86,7 +144,7 @@
             <tr><td><input type="number" name="usedTime" oninput="if(value.length>6)value=value.slice(0,6)"
                             onblur="if(value.length==4)value=value+'00'"></td></tr>
             <tr><td>利用店名(50文字以内):</td></tr>
-            <tr><td><input type="text" name="storeName" id="storeName"><span style="color:red">(必須)</span></td></tr>
+            <tr><td><input type="text" name="storeName" id="storeName" onfocus="showStoreNames()><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用金額:</td></tr>
             <tr><td><input type="number" name="amount" id="amount"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用区分:</td></tr>
@@ -118,9 +176,9 @@
             <tr><td>分割支払回数:</td></tr>
             <tr><td><input type="number" value="1" name="paymentSplitTimes"><span style="color:red">(必須)</span></td></tr>
             <tr><td>支払方法:</td></tr>
-            <tr><td><input type="text" name="paymentMethod"></td></tr>
+            <tr><td><input type="text" name="paymentMethod" id="paymentMethod" onfocus="showPaymentMethods()"></td></tr>
             <tr><td>備考(255文字以内):</td></tr>
-            <tr><td><input type="text" name="comment"></td></tr>
+            <tr><td><input type="text" name="comment" id="comment" onfocus="showComments()"></td></tr>
             
         </table>
         <br>
