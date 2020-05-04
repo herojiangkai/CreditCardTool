@@ -144,7 +144,7 @@
             <tr><td><input type="number" name="usedTime" oninput="if(value.length>6)value=value.slice(0,6)"
                             onblur="if(value.length==4)value=value+'00'"></td></tr>
             <tr><td>利用店名(50文字以内):</td></tr>
-            <tr><td><input type="text" name="storeName" id="storeName" onfocus="showStoreNames()><span style="color:red">(必須)</span></td></tr>
+            <tr><td><input type="text" name="storeName" id="storeName" onfocus="showStoreNames()"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用金額:</td></tr>
             <tr><td><input type="number" name="amount" id="amount"><span style="color:red">(必須)</span></td></tr>
             <tr><td>利用区分:</td></tr>
