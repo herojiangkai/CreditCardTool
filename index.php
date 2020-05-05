@@ -14,16 +14,21 @@
     <script src="jquery/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
     <script src="jquery/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 
+    <link rel="stylesheet" href="OnsenUI/OnsenUI-dist-2.10.10/css/onsenui.css">
+    <link rel="stylesheet" href="OnsenUI/OnsenUI-dist-2.10.10/css/onsen-css-components.min.css">
+    <script src="OnsenUI/OnsenUI-dist-2.10.10/js/onsenui.min.js"></script>
+
+
     <script type="text/javascript">
         function checkAndSubmit() {
             if(document.getElementById("usedDate").value==""){
-                alert("利用日を入力してください。");
+                ons.notification.alert("利用日を入力してください。");
             }else if(document.getElementById("storeName").value==""){
-                alert("利用店名を入力してください。");
+                ons.notification.alert("利用店名を入力してください。");
             }else if(document.getElementById("amount").value==""){
-                alert("利用金額を入力してください。");
+                ons.notification.alert("利用金額を入力してください。");
             }else if(document.getElementById("user").value==""){
-                alert("利用区分を選択してください。");
+                ons.notification.alert("利用区分を選択してください。");
             }else if(document.getElementById("user").value=="lumine(7914)"){
                 rdo=document.getElementsByName("offPct");
                 checkCount=0;
@@ -33,7 +38,7 @@
                     } 
                 }
                 if(checkCount==0){
-                    alert("割引を選択してください。");
+                    ons.notification.alert("割引を選択してください。");
                 }else{
                     document.getElementById("creditInputForm").submit();
                 }
@@ -60,7 +65,8 @@
                     setTimeout(function () {
                         $this.blur();
                     }, 1);
-                }
+                },
+                appendTo: ".content"
             }).focus(function () {
                 $(this).autocomplete("search");//姜メモ:ここは「search」固定
                 return false;
@@ -79,7 +85,8 @@
                     setTimeout(function () {
                         $this.blur();
                     }, 1);
-                }
+                },
+                appendTo: ".content"
             }).focus(function () {
                 $(this).autocomplete("search");//姜メモ:ここは「search」固定
                 return false;
@@ -98,7 +105,8 @@
                     setTimeout(function () {
                         $this.blur();
                     }, 1);
-                }
+                },
+                appendTo: ".content"
             }).focus(function () {
                 $(this).autocomplete("search");//姜メモ:ここは「search」固定
                 return false;
@@ -109,6 +117,8 @@
 </head>
 
 <body onload="showStoreNames();showPaymentMethods();showComments();">
+<ons-page>
+<div class="content">
 
     <h3 align="center">出費登録</h3>
 
@@ -183,7 +193,7 @@
         </table>
         <br>
         <div align="center">
-            <input type="button" onclick="checkAndSubmit()" value="     登録     ">
+            <ons-button onclick="checkAndSubmit()">　　　登録　　　</ons-button>
             <br><br>
             <input type="reset" value="クリア" onclick="showOffPct('')">
         </div>
@@ -191,6 +201,8 @@
         
 
     </form>
+</div>
+</ons-page>
 </body>
 
 </html>
