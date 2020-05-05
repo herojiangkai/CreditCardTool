@@ -119,7 +119,7 @@
 <body onload="showStoreNames();showPaymentMethods();showComments();">
 <ons-page>
 <div class="content">
-
+    <br>
     <h3 align="center">出費登録</h3>
 
     <div align="center">
@@ -146,18 +146,14 @@
     <br>
     <form method= "post" action="writeCsv.php" id="creditInputForm" autocomplete="on">
         <table align="center">
-            <tr><td>レシート・注文番号:</td></tr>
-            <tr><td><input type="text" name="receiptNo"></td></tr>
-            <tr><td>利用日(yyyyMMdd形式):</td></tr>
-            <tr><td><input type="date" name="usedDate" id="usedDate" value="<?php echo date("Y-m-d")?>"><span style="color:red">(必須)</span></td></tr>
-            <tr><td>利用時刻(HHmmss形式):</td></tr>
-            <tr><td><input type="number" name="usedTime" oninput="if(value.length>6)value=value.slice(0,6)"
-                            onblur="if(value.length==4)value=value+'00'"></td></tr>
-            <tr><td>利用店名(50文字以内):</td></tr>
+            <tr><td><br><ons-input modifier="material" type="text" name="receiptNo" placeholder="レシート・注文番号" float></ons-input></td></tr>
+            <tr><td><br><ons-input modifier="material" type="date" name="usedDate" id="usedDate" value="<?php echo date("Y-m-d")?>" placeholder="利用日" float></ons-input><span style="color:red">(必須)</span></td></tr>
+            <tr><td><br><ons-input modifier="material" type="number" name="usedTime" oninput="if(value.length>6)value=value.slice(0,6)"
+                            onblur="if(value.length==4)value=value+'00'" placeholder="利用時刻(HHmmss形式)" float></ons-input></td></tr>
+            <tr><td><span style="color:blue">利用店名:</span></td></tr>
             <tr><td><input type="text" name="storeName" id="storeName" onfocus="showStoreNames()"><span style="color:red">(必須)</span></td></tr>
-            <tr><td>利用金額:</td></tr>
-            <tr><td><input type="number" name="amount" id="amount"><span style="color:red">(必須)</span></td></tr>
-            <tr><td>利用区分:</td></tr>
+            <tr><td><br><ons-input modifier="material" type="number" name="amount" id="amount" placeholder="利用金額" float></ons-input><span style="color:red">(必須)</span></td></tr>
+            <tr><td><span style="color:blue">利用区分:</span><span style="color:red">(選択間違い注意)</span></td></tr>
             <tr>
                 <td><select name="user" id="user" onchange="showOffPct(this.value)">
                     <option value="" selected>ーー</option>
@@ -169,25 +165,24 @@
                     <option value="epos_王(6393)">EPOS_王(6393)</option>
                     <option value="bic(6116)">Bic(6116)</option>
                     <option value="本人">楽天_姜(6229)</option>
-                    <option value="家族">楽天_王(9283)</option>                
+                    <option value="家族">楽天_王(9283)</option>
                     <option value="lumine(7914)">Lumine(7914)</option>
                     <option value="ft(8518)">ファミマT(8518)</option>
-                    <option value="toho(8000)">TOHO(8000)</option>                    
-                </select><span style="color:red">(選択間違い注意)</span></td>
+                    <option value="toho(8000)">TOHO(8000)</option>
+                </select></td>
             </tr>
             <tr><td>
-                <div style="display:none;background:yellow" id="offPctDiv">割引:<br>
+                <div style="display:none;background:yellow" id="offPctDiv"><span style="color:blue">割引:</span><br>
                     <input type="radio" name="offPct" value="0">0%
                     <input type="radio" name="offPct" value="5">5%
                     <input type="radio" name="offPct" value="10">10%
                     <span style="color:red">(必須)</span>
                 </div>
             </td></tr>
-            <tr><td>分割支払回数:</td></tr>
-            <tr><td><input type="number" value="1" name="paymentSplitTimes"><span style="color:red">(必須)</span></td></tr>
-            <tr><td>支払方法:</td></tr>
+            <tr><td><br><ons-input modifier="material" type="number" value="1" name="paymentSplitTimes" placeholder="分割支払回数" float></ons-input></td></tr>
+            <tr><td><span style="color:blue">支払方法:</span></td></tr>
             <tr><td><input type="text" name="paymentMethod" id="paymentMethod" onfocus="showPaymentMethods()"></td></tr>
-            <tr><td>備考(255文字以内):</td></tr>
+            <tr><td><span style="color:blue">備考:</span></td></tr>
             <tr><td><input type="text" name="comment" id="comment" onfocus="showComments()"></td></tr>
             
         </table>

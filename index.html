@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="OnsenUI/OnsenUI-dist-2.10.10/css/onsenui.css">
+    <link rel="stylesheet" href="OnsenUI/OnsenUI-dist-2.10.10/css/onsen-css-components.min.css">
+    <script src="OnsenUI/OnsenUI-dist-2.10.10/js/onsenui.min.js"></script>
+
+    <script>
+
+        window.fn = {};
+
+        window.fn.open = function () {
+            var menu = document.getElementById('menu');
+            menu.open();
+        };
+
+        window.fn.load = function (page) {
+            var content = document.getElementById('content');
+            var menu = document.getElementById('menu');
+            content.load(page)
+                .then(menu.close.bind(menu));
+        };
+    </script>
+
+
+</head>
+
+<body>
+    <ons-splitter>
+        <ons-splitter-side id="menu" side="left" width="220px" collapse swipeable>
+            <ons-page>
+                <ons-list>
+                    <ons-list-item onclick="fn.load('index')" tappable>
+                        出費登録
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('sum')" tappable>
+                        直近月間集計
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('q')" tappable>
+                        入力照会・変更
+                    </ons-list-item>
+                    <ons-list-item onclick="fn.load('sumOld')" tappable>
+                        過去集計
+                    </ons-list-item>
+                </ons-list>
+
+
+            </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="index"></ons-splitter-content>
+    </ons-splitter>
+
+    <template id="index">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    出費登録
+                </div>
+            </ons-toolbar>
+            <iframe src="index.php" height="99%" width="99%"></iframe>
+        </ons-page>
+    </template>
+
+    <template id="sum">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    直近月間集計
+                </div>
+            </ons-toolbar>
+            <iframe src="sum" height="99%" width="99%"></iframe>
+        </ons-page>
+    </template>
+
+    <template id="q">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    入力照会・変更
+                </div>
+            </ons-toolbar>
+            <iframe src="q" height="99%" width="99%"></iframe>
+        </ons-page>
+    </template>
+
+
+    <template id="sumOld">
+        <ons-page>
+            <ons-toolbar>
+                <div class="left">
+                    <ons-toolbar-button onclick="fn.open()">
+                        <ons-icon icon="md-menu"></ons-icon>
+                    </ons-toolbar-button>
+                </div>
+                <div class="center">
+                    過去集計
+                </div>
+            </ons-toolbar>
+            <iframe src="sumOld" height="99%" width="99%"></iframe>
+        </ons-page>
+    </template>
+
+
+
+</body>
+
+</html>
