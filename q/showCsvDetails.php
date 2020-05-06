@@ -47,8 +47,8 @@ $csvFileName=$_GET["csvFileName"];
     <?php echo "<a href='editCsvDetails.php?cardTypeName=$cardTypeName&folderPath=$folderPath&csvFileName=$csvFileName'><font color='red'>【編集】</font></a>" ?>
     </div>
     <div align="right">    
-        <a href="../index.php">入力画面</a>
-        <a href="../q/">入力照会・変更</a>
+        <a href="/">入力画面</a>
+        <a href="/q/">入力照会・変更</a>
     </div>
     <div align="left">
         <a href="javascript:void(0)" onclick="location.reload()">表示順reset</a>

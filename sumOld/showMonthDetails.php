@@ -78,7 +78,7 @@ if(isset($_GET["comment"])){
 <body>
     <h3 align="center">過去詳細　<?php echo isset($_GET["yearMonth"])?$_GET["yearMonth"]:(isset($_GET["store"])?$_GET["store"]:$_GET["user"])." $startDate~$endDate"?></h3>
     <div align="right">
-        <a href="../index.php">入力画面</a>
+        <a href="/">入力画面</a>
         <a href="javascript:history.go(-1)">戻る</a>
     </div>
     <div align="left">

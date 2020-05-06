@@ -43,7 +43,7 @@
 <body>
     <h3 align="center">【編集】<?php echo $cardTypeName."　　".$csvFileName?></h3>
     <div align="right">
-        <a href="../index.php">入力画面</a>
+        <a href="/">入力画面</a>
         <a href="../q/">入力照会・変更</a>
         <a href="javascript:history.go(-1)">戻る</a><br><br>
 

@@ -1,3 +1,14 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+        過去集計
+        </div>
+    </ons-toolbar>
 <?php
    class MyDB extends SQLite3
    {
@@ -127,8 +138,7 @@
 
 </head>
 <body>
-   <h3 align="center">過去集計</h3>
-   <div align="right"><a href="../index.php">入力画面</a></div>
+   <div align="right"><a href="/">入力画面</a></div>
    <div align="center"">
       <a <?php echo 'href="sumByStore.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用店別集計</a>
       <a <?php echo 'href="sumByUser.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用区分別集計</a>
@@ -253,3 +263,4 @@ while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
       return $sql;
    }
 ?>
+</ons-page>

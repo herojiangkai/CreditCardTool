@@ -1,3 +1,14 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+        直近月間集計
+        </div>
+    </ons-toolbar>
 <?php
    class MyDB extends SQLite3
    {
@@ -49,8 +60,7 @@
 
 </head>
 <body>
-   <h3 align="center">直近月間集計</h3>
-   <div align="right"><a href="../index.php">入力画面</a></div>
+   <div align="right"><a href="/">入力画面</a></div>
    <br><br>
 
    <div align="center">
@@ -60,7 +70,7 @@
 <?php
 while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
    echo "<tr>";
-   echo "<td><a href='showMonthDetails.php?yearMonth=".$row['yearMonth']."'>".$row['yearMonth']."</a></td>";
+   echo "<td><a href='/sum/showMonthDetails.php?yearMonth=".$row['yearMonth']."'>".$row['yearMonth']."</a></td>";
    echo "<td align='right'>".$row['totalAmount']."</td>";
    echo "<td align='right'>".$row['numberOfEntries']."</td>";
    echo "</tr>";
@@ -114,3 +124,4 @@ while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
       return $sql;
    }
 ?>
+</ons-page>

@@ -39,8 +39,8 @@
 <body>
     <h3 align="center">月間詳細　<?php echo $_GET["yearMonth"]?></h3>
     <div align="right">
-        <a href="../index.php">入力画面</a>
-        <a href="../sum/">月間集計</a>
+        <a href="/">入力画面</a>
+        <a href="/sum/">月間集計</a>
     </div>
     
     <div align="left">

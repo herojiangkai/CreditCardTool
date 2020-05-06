@@ -26,7 +26,7 @@
 <body>
 <h3 align="center">明細検索</h3>
 <div align="right">
-    <a href="../index.php">入力画面</a>
+    <a href="/">入力画面</a>
     <a href="./">戻る</a>
 </div>
 

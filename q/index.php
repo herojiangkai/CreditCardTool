@@ -1,3 +1,14 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+        入力照会・変更
+        </div>
+    </ons-toolbar>
 <html>
 <head>
     <title>入力照会・変更</title>
@@ -7,8 +18,7 @@
     <meta name="theme-color" content="#ffd700">
 </head>
 <body>
-<h3 align="center">入力照会・変更</h3>
-<div align="right"><a href="../index.php">入力画面</a></div>
+<div align="right"><a href="/">入力画面</a></div>
 <br><br>
     <table align="center" border="1">
     <?php
@@ -43,3 +53,4 @@ function printCsvFileList($cardTypeName,$folderPath){
 }
 
 ?>
+</ons-page>

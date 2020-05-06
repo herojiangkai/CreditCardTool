@@ -1,8 +1,19 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+        出費登録
+        </div>
+    </ons-toolbar>
 <?php session_start();?>
 <html>
 
 <head>
-    <title>出費登録画面</title>
+    <title>出費登録</title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta content="width=device-width,user-scalable=no" name="viewport">
@@ -10,9 +21,6 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="bookmark" href="/favicon.ico" />
 
-    <link rel="stylesheet" href="jquery/jquery-ui-1.12.1.custom/jquery-ui.css" />
-    <script src="jquery/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
-    <script src="jquery/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 
     <link rel="stylesheet" href="OnsenUI/OnsenUI-dist-2.10.10/css/onsenui.css">
     <link rel="stylesheet" href="OnsenUI/OnsenUI-dist-2.10.10/css/onsen-css-components.min.css">
@@ -113,14 +121,17 @@
             }
             );
         };
+
+        showStoreNames();
+        showPaymentMethods();
+        showComments();
     </script>
 </head>
 
-<body onload="showStoreNames();showPaymentMethods();showComments();">
+<body>
 <ons-page>
 <div class="content">
     <br>
-    <h3 align="center">出費登録</h3>
 
     <div align="center">
     <table>
@@ -201,3 +212,4 @@
 </body>
 
 </html>
+</ons-page>
