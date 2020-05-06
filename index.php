@@ -28,15 +28,20 @@
 
 
     <script type="text/javascript">
+        var showAlert = function (msg) {
+            ons.notification.alert(msg, {
+                title: ""
+            });
+        };
         function checkAndSubmit() {
             if(document.getElementById("usedDate").value==""){
-                ons.notification.alert("利用日を入力してください。");
+                showAlert("利用日を入力してください。");
             }else if(document.getElementById("storeName").value==""){
-                ons.notification.alert("利用店名を入力してください。");
+                showAlert("利用店名を入力してください。");
             }else if(document.getElementById("amount").value==""){
-                ons.notification.alert("利用金額を入力してください。");
+                showAlert("利用金額を入力してください。");
             }else if(document.getElementById("user").value==""){
-                ons.notification.alert("利用区分を選択してください。");
+                showAlert("利用区分を選択してください。");
             }else if(document.getElementById("user").value=="lumine(7914)"){
                 rdo=document.getElementsByName("offPct");
                 checkCount=0;
@@ -46,7 +51,7 @@
                     } 
                 }
                 if(checkCount==0){
-                    ons.notification.alert("割引を選択してください。");
+                    showAlert("割引を選択してください。");
                 }else{
                     document.getElementById("creditInputForm").submit();
                 }
