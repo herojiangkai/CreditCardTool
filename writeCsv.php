@@ -58,7 +58,7 @@ fclose($csvFile);
 
 $csvWriteResult="登録成功!";
 $_SESSION['csvWriteResult']=$csvWriteResult;
-header("Location: index.php");
+header("Location: /");
 
 
 function addDoubleQuotationForElements($array){
