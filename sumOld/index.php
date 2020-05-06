@@ -1,6 +1,6 @@
 <ons-page>
     <ons-toolbar>
-        <div class="left">
+        <div class="right">
             <ons-toolbar-button onclick="fn.open()">
                 <ons-icon icon="md-menu"></ons-icon>
             </ons-toolbar-button>
