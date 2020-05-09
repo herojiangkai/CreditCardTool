@@ -167,8 +167,8 @@
             <tr><td><br><ons-input modifier="material" type="number" name="usedTime" oninput="if(value.length>6)value=value.slice(0,6)"
                             onblur="if(value.length==4)value=value+'00'" placeholder="利用時刻(HHmmss形式)" float></ons-input></td></tr>
             <tr><td><span style="color:blue">利用店名:</span></td></tr>
-            <tr><td><input class="text-input text-input--material" type="text" name="storeName" id="storeName" onfocus="showStoreNames()"><span style="color:red">(必須)</span></td></tr>
-            <tr><td><br><ons-input modifier="material" type="number" name="amount" id="amount" placeholder="利用金額" float></ons-input><span style="color:red">(必須)</span></td></tr>
+            <tr><td><input class="text-input text-input--material" type="text" name="storeName" id="storeName" onfocus="showStoreNames()" placeholder="選択推奨"><span style="color:red">(必須)</span></td></tr>
+            <tr><td><br>¥&nbsp<ons-input modifier="material" type="number" name="amount" id="amount" placeholder="利用金額" float></ons-input><span style="color:red">(必須)</span></td></tr>
             <tr><td><span style="color:blue">利用区分:</span><span style="color:red">(選択間違い注意)</span></td></tr>
             <tr>
                 <td><select class="select-input select-input--underbar"　name="user" id="user" onchange="showOffPct(this.value)">
@@ -203,9 +203,9 @@
             </td></tr>
             <tr><td><br><ons-input modifier="material" type="number" value="1" name="paymentSplitTimes" placeholder="分割支払回数" float></ons-input></td></tr>
             <tr><td><span style="color:blue">支払方法:</span></td></tr>
-            <tr><td><input class="text-input text-input--material" type="text" name="paymentMethod" id="paymentMethod" onfocus="showPaymentMethods()"></td></tr>
+            <tr><td><input class="text-input text-input--material" type="text" name="paymentMethod" id="paymentMethod" onfocus="showPaymentMethods()" placeholder="電子マネー、ポイント等"></td></tr>
             <tr><td><span style="color:blue">備考:</span></td></tr>
-            <tr><td><input class="text-input text-input--material" type="text" name="comment" id="comment" onfocus="showComments()"></td></tr>
+            <tr><td><input class="text-input text-input--material" type="text" name="comment" id="comment" onfocus="showComments()" placeholder="上記支払方法の金額等"></td></tr>
             
         </table>
         <br>
