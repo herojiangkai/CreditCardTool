@@ -139,13 +139,24 @@
     <br>
 
     <div align="center">
-    <table>
+    <!-- <table>
         <tr>
             <td align="center"><a href="sumOld">過去集計</a></td>
             <td align="center"><a href="q">入力照会・変更</a></td>
             <td align="center"><a href="sum">直近月間集計</a></td>
         </tr>
-    </table>
+    </table> -->
+    <div class="button-bar" style="width:300px;">
+    <div class="button-bar__item">
+        <button class="button-bar__button" onclick="window.location.href='sumOld'">過去集計</button>
+    </div>
+    <div class="button-bar__item">
+        <button class="button-bar__button" onclick="window.location.href='q'">入力照会・変更</button>
+    </div>
+    <div class="button-bar__item">
+        <button class="button-bar__button" onclick="window.location.href='sum'">直近月間集計</button>
+    </div>
+    </div>
         
     </div>
     
