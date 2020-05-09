@@ -167,11 +167,11 @@
             <tr><td><br><ons-input modifier="material" type="number" name="usedTime" oninput="if(value.length>6)value=value.slice(0,6)"
                             onblur="if(value.length==4)value=value+'00'" placeholder="利用時刻(HHmmss形式)" float></ons-input></td></tr>
             <tr><td><span style="color:blue">利用店名:</span></td></tr>
-            <tr><td><input type="text" name="storeName" id="storeName" onfocus="showStoreNames()"><span style="color:red">(必須)</span></td></tr>
+            <tr><td><input class="text-input text-input--material" type="text" name="storeName" id="storeName" onfocus="showStoreNames()"><span style="color:red">(必須)</span></td></tr>
             <tr><td><br><ons-input modifier="material" type="number" name="amount" id="amount" placeholder="利用金額" float></ons-input><span style="color:red">(必須)</span></td></tr>
             <tr><td><span style="color:blue">利用区分:</span><span style="color:red">(選択間違い注意)</span></td></tr>
             <tr>
-                <td><select name="user" id="user" onchange="showOffPct(this.value)">
+                <td><select class="select-input select-input--underbar"　name="user" id="user" onchange="showOffPct(this.value)">
                     <option value="" selected>ーー</option>
                     <option value="現金(姜)">現金(姜)</option>
                     <option value="現金(王)">現金(王)</option>
@@ -189,17 +189,23 @@
             </tr>
             <tr><td>
                 <div style="display:none;background:yellow" id="offPctDiv"><span style="color:blue">割引:</span><br>
-                    <input type="radio" name="offPct" value="0">0%
-                    <input type="radio" name="offPct" value="5">5%
-                    <input type="radio" name="offPct" value="10">10%
+                <label class="radio-button radio-button--material">
+                    <input class="radio-button__input radio-button--material__input" type="radio" name="offPct" value="0">
+                    <div class="radio-button__checkmark radio-button--material__checkmark"></div>0%　</label>
+                <label class="radio-button radio-button--material">
+                    <input class="radio-button__input radio-button--material__input" type="radio" name="offPct" value="5">
+                    <div class="radio-button__checkmark radio-button--material__checkmark"></div>5%　</label>
+                <label class="radio-button radio-button--material">
+                    <input class="radio-button__input radio-button--material__input" type="radio" name="offPct" value="10">
+                    <div class="radio-button__checkmark radio-button--material__checkmark"></div>10%　</label>
                     <span style="color:red">(必須)</span>
                 </div>
             </td></tr>
             <tr><td><br><ons-input modifier="material" type="number" value="1" name="paymentSplitTimes" placeholder="分割支払回数" float></ons-input></td></tr>
             <tr><td><span style="color:blue">支払方法:</span></td></tr>
-            <tr><td><input type="text" name="paymentMethod" id="paymentMethod" onfocus="showPaymentMethods()"></td></tr>
+            <tr><td><input class="text-input text-input--material" type="text" name="paymentMethod" id="paymentMethod" onfocus="showPaymentMethods()"></td></tr>
             <tr><td><span style="color:blue">備考:</span></td></tr>
-            <tr><td><input type="text" name="comment" id="comment" onfocus="showComments()"></td></tr>
+            <tr><td><input class="text-input text-input--material" type="text" name="comment" id="comment" onfocus="showComments()"></td></tr>
             
         </table>
         <br>
