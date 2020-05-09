@@ -206,7 +206,7 @@
         <div align="center">
             <ons-button onclick="checkAndSubmit()">　　　登録　　　</ons-button>
             <br><br>
-            <input type="reset" value="クリア" onclick="showOffPct('')">
+            <input class="ui-button ui-widget ui-corner-all" type="reset" value="クリア" onclick="showOffPct('')">
         </div>
         
         
