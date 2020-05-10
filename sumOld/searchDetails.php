@@ -169,14 +169,20 @@
 </head>
 
 <body>
-<!-- <h3 align="center">明細検索</h3> -->
-<div align="right">
-    <a href="/">入力画面</a>
-    <a href="./">戻る</a>
-</div>
+<br>
+   <div align="right">
+   <div class="button-bar" style="width:200px;">
+    <div class="button-bar__item">
+        <button class="button-bar__button" onclick="window.location.href='/'">入力画面</button>
+    </div>
+    <div class="button-bar__item">
+        <button class="button-bar__button" onclick="window.location.href='./'">戻る</button>
+    </div>
+    </div>
+   </div>
 
 <div align="center">
-<form  action="showMonthDetails.php" method="get" autocomplete="off">
+<form  action="showMonthDetails.php" method="get" autocomplete="off" name="form1">
 <input type="hidden" name="action" value="search">
 
 <table>
@@ -200,12 +206,12 @@
 <tr><td></td><td><input type="checkbox" name="users[]" value="toho(8000)" checked>TOHO(8000)</td></tr>
 <tr><td>支払方法:</td><td><input type="text" name="paymentMethod" id="paymentMethod" onfocus="showPaymentMethods()"></td></tr>
 <tr><td>備考:</td><td><input type="text" name="comment" id="comment" onfocus="showComments()"></td></tr>
-<tr><td></td><td><input type="submit" value="検索"></td></tr>
+<tr><td></td><td><ons-button onclick='document.form1.submit();'>検索</ons-button></td></tr>
 </table>
 
 </form>
 </div>
-<br><br><br><br><br><br>
+<br><br>
 
 <script>
         showStoreNames();
