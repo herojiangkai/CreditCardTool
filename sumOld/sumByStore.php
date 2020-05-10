@@ -1,3 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+
+    <link rel="stylesheet" href="/OnsenUI/OnsenUI-dist-2.10.10/css/onsenui.css">
+    <link rel="stylesheet" href="/OnsenUI/OnsenUI-dist-2.10.10/css/onsen-css-components.min.css">
+    <script src="/OnsenUI/OnsenUI-dist-2.10.10/js/onsenui.min.js"></script>
+
+
+
+    <script>
+        window.fn = {};
+
+        window.fn.open = function () {
+            var menu = document.getElementById('menu');
+            menu.open();
+        };
+
+        window.fn.load = function (page) {
+            var content = document.getElementById('content');
+            var menu = document.getElementById('menu');
+            content.load(page)
+                .then(menu.close.bind(menu));
+        };
+        window.fn.close = function () {
+            var menu = document.getElementById('menu');
+            menu.close();
+        };
+    </script>
+
+
+</head>
+
+<body>
+    <ons-splitter>
+        <ons-splitter-side id="menu" side="right" width="220px" collapse swipeable>
+            <ons-page>
+                <ons-list>
+                    <ons-list-item onclick="location='/'" tappable>
+                        出費登録
+                    </ons-list-item>
+                    <ons-list-item onclick="location='/sum'" tappable>
+                        直近月間集計
+                    </ons-list-item>
+                    <ons-list-item onclick="location='/q'" tappable>
+                        入力照会・変更
+                    </ons-list-item>
+                    <ons-list-item onclick="location='/sumOld'" tappable>
+                        過去集計
+                    </ons-list-item>
+                </ons-list>
+            </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content">
+
+
+
+        <ons-page>
+    <ons-toolbar>
+        <div class="right">
+            <ons-toolbar-button onclick="fn.open()">
+                <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="center">
+        利用店別集計
+        </div>
+    </ons-toolbar>
+
+    <div class="content">
+
+
 <html>
 <head>
     <title>利用店別集計</title>
@@ -38,14 +113,25 @@
   </script>
 </head>
 <body>
-    <h3 align="center">利用店別集計</h3>
-    <div align="right">
-        <a href="/">入力画面</a>
-        <a href="./">戻る</a>
+    <br>
+   <div align="right">
+   <div class="button-bar" style="width:200px;">
+    <div class="button-bar__item">
+        <button class="button-bar__button" onclick="window.location.href='/'">入力画面</button>
     </div>
+    <div class="button-bar__item">
+        <button class="button-bar__button" onclick="window.location.href='./'">戻る</button>
+    </div>
+    </div>
+   </div>
+
     <div align="left">
-        <a href="javascript:void(0)" onclick="location.reload()">表示順reset</a>
-    </div>
+         <button class="toolbar-button toolbar-button--outline" onclick="location.reload()" style="height:27px;width:100px">
+            <a style="font-size:13px; vertical-align:2px;">表示順reset</a>
+         </button>
+   </div>
+
+
     <div align="center">
     <?php 
     $startDate="19000101";
@@ -62,17 +148,17 @@
         $leastUseCount=$_GET["leastUseCount"];
     }
     ?>
-    <form action="sumByStore.php" method="get">
-        期間:<input type="date" name="startDate" value="<?php echo date("Y-m-d",strtotime($startDate))?>">
-        ～<input type="date" name="endDate" value="<?php echo date("Y-m-d",strtotime($endDate))?>"><br>
-        最低利用回数:<input type="number" name="leastUseCount" value="<?php echo $leastUseCount?>">
-        <input type="submit" value="検索">
+    <form action="sumByStore.php" method="get" name="form1">
+        期間:<ons-input modifier="material" type="date" name="startDate" value="<?php echo date("Y-m-d",strtotime($startDate))?>"></ons-input>
+        ～<ons-input modifier="material" type="date" name="endDate" value="<?php echo date("Y-m-d",strtotime($endDate))?>"></ons-input><br>
+        最低利用回数:<ons-input modifier="material" type="number" name="leastUseCount" value="<?php echo $leastUseCount?>" style="width:160px"></ons-input>
+        <ons-button onclick='document.form1.submit();'>検索</ons-button>
     </form>
-    <a <?php echo $_GET["option"]=="all"?"":'href="sumByStore.php?option=all"'?>>すべて</a>
-    <a <?php echo $_GET["option"]=="1y"?"":'href="sumByStore.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>直近1年</a>
-    <a <?php echo $_GET["option"]=="6m"?"":'href="sumByStore.php?option=6m&startDate='.date("Ymd",strtotime("-6 month")).'&endDate='.date("Ymd").'"'?>>直近半年</a>
-    <a <?php echo $_GET["option"]=="3m"?"":'href="sumByStore.php?option=3m&startDate='.date("Ymd",strtotime("-3 month")).'&endDate='.date("Ymd").'"'?>>直近3ヶ月</a>
-    <a <?php echo $_GET["option"]=="1m"?"":'href="sumByStore.php?option=1m&startDate='.date("Ymd",strtotime("-1 month")).'&endDate='.date("Ymd").'"'?>>直近1ヶ月</a>
+    <a <?php echo isset($_GET["option"])&&$_GET["option"]=="all"?"":'href="sumByStore.php?option=all"'?>>すべて</a>
+    <a <?php echo isset($_GET["option"])&&$_GET["option"]=="1y"?"":'href="sumByStore.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>直近1年</a>
+    <a <?php echo isset($_GET["option"])&&$_GET["option"]=="6m"?"":'href="sumByStore.php?option=6m&startDate='.date("Ymd",strtotime("-6 month")).'&endDate='.date("Ymd").'"'?>>直近半年</a>
+    <a <?php echo isset($_GET["option"])&&$_GET["option"]=="3m"?"":'href="sumByStore.php?option=3m&startDate='.date("Ymd",strtotime("-3 month")).'&endDate='.date("Ymd").'"'?>>直近3ヶ月</a>
+    <a <?php echo isset($_GET["option"])&&$_GET["option"]=="1m"?"":'href="sumByStore.php?option=1m&startDate='.date("Ymd",strtotime("-1 month")).'&endDate='.date("Ymd").'"'?>>直近1ヶ月</a>
 
     <table border="1" id="tbSort">
     <thead>
@@ -134,4 +220,15 @@
     </table>
     </div>
 </body>
+</html>
+
+
+</div>
+</ons-page>
+
+</ons-splitter-content>
+    </ons-splitter>
+
+</body>
+
 </html>
