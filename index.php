@@ -139,13 +139,6 @@
     <br>
 
     <div align="center">
-    <!-- <table>
-        <tr>
-            <td align="center"><a href="sumOld">過去集計</a></td>
-            <td align="center"><a href="q">入力照会・変更</a></td>
-            <td align="center"><a href="sum">直近月間集計</a></td>
-        </tr>
-    </table> -->
     <div class="button-bar" style="width:300px;">
     <div class="button-bar__item">
         <button class="button-bar__button" onclick="window.location.href='sumOld'">過去集計</button>
@@ -224,6 +217,7 @@
             <ons-button onclick="checkAndSubmit()">　　　登録　　　</ons-button>
             <br><br>
             <input class="ui-button ui-widget ui-corner-all" type="reset" value="クリア" onclick="showOffPct('')">
+            <br><br>
         </div>
         
         

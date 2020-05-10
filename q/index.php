@@ -18,7 +18,12 @@
     <meta name="theme-color" content="#ffd700">
 </head>
 <body>
-<div align="right"><a href="/">入力画面</a></div>
+<br>
+   <div align="right">
+         <button class="toolbar-button toolbar-button--outline" onclick="window.location.href='/'" style="height:27px;width:100px">
+            <a style="font-size:13px; vertical-align:2px;">入力画面</a>
+         </button>
+   </div>
 <br><br>
     <table align="center" border="1">
     <?php

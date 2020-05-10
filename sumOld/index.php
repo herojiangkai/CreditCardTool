@@ -138,12 +138,29 @@
 
 </head>
 <body>
-   <div align="right"><a href="/">入力画面</a></div>
-   <div align="center"">
-      <a <?php echo 'href="sumByStore.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用店別集計</a>
-      <a <?php echo 'href="sumByUser.php?option=1y&startDate='.date("Ymd",strtotime("-1 year")).'&endDate='.date("Ymd").'"'?>>利用区分別集計</a>
-      <a href="searchDetails.php">明細検索</a>
+<br>
+   <div align="right">
+         <button class="toolbar-button toolbar-button--outline" onclick="window.location.href='/'" style="height:27px;width:100px">
+            <a style="font-size:13px; vertical-align:2px;">入力画面</a>
+         </button>
    </div>
+<br>
+   <div align="center">
+    <div class="button-bar" style="width:300px;">
+    <div class="button-bar__item">
+        <button class="button-bar__button" onclick="window.location.href='<?php echo 'sumByStore.php?option=1y&startDate='.date('Ymd',strtotime('-1 year')).'&endDate='.date('Ymd')?>'">利用店別集計</button>
+    </div>
+    <div class="button-bar__item">
+        <button class="button-bar__button" onclick="window.location.href='<?php echo 'sumByUser.php?option=1y&startDate='.date('Ymd',strtotime('-1 year')).'&endDate='.date('Ymd')?>'">利用区分別集計</button>
+    </div>
+    <div class="button-bar__item">
+        <button class="button-bar__button" onclick="window.location.href='searchDetails.php'">明細検索</button>
+    </div>
+    </div>
+        
+   </div>
+
+
    <br>
 
    <div align="center">
