@@ -175,7 +175,7 @@
             <tr><td><br>¥&nbsp<ons-input modifier="material" type="number" name="amount" id="amount" placeholder="利用金額" float></ons-input><span style="color:red">(必須)</span></td></tr>
             <tr><td><span style="color:blue">利用区分:</span><span style="color:red">(選択間違い注意)</span></td></tr>
             <tr>
-                <td><select class="select-input select-input--underbar"　name="user" id="user" onchange="showOffPct(this.value)">
+                <td><select class="select-input select-input--underbar" name="user" id="user" onchange="showOffPct(this.value)">
                     <option value="" selected>ーー</option>
                     <option value="現金(姜)">現金(姜)</option>
                     <option value="現金(王)">現金(王)</option>
