@@ -35,11 +35,15 @@
                         "../csvToho/","../csvToho/done_except_sum/");
 
    $sql=makeInsertSqlForAllCsv($targetDirArray);
-
+   
+   $db->exec('PRAGMA synchronous = OFF;');//性能向上
+   $db->exec('begin');//性能向上
    $ret = $db->exec($sql);
    if(!$ret){
       echo $db->lastErrorMsg();
    }
+   $db->exec('commit');//性能向上
+
 
    $sql="SELECT substr(date_of_use,0,7) as yearMonth
                ,sum(usage_amount)      as totalAmount
