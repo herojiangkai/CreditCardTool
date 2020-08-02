@@ -257,7 +257,7 @@ while($row = $ret->fetchArray(SQLITE3_ASSOC) ){
               for($i=1;$i<sizeof($currentColums)-1;$i++){
                 $sql.="'$currentColums[$i]',";                  
              }
-             $sql.="'".substr($currentColums[sizeof($currentColums)-1],0,-3)."',null,null,null,null,null);";
+             $sql.="'".rtrim(rtrim(rtrim($currentColums[sizeof($currentColums)-1],"\n"),"\r"),'"')."',null,null,null,null,null);";
           }
       }
       fclose($csvFile);
