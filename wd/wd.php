@@ -14,7 +14,7 @@ $server = new DAV\Server($rootDirectory);
 
 // If your server is not on your webroot, make sure the following line has the
 // correct information
-$server->setBaseUri('/webdav/webdav.php');
+$server->setBaseUri('/wd/wd.php');
 
 // The lock manager is reponsible for making sure users don't overwrite
 // each others changes.
