@@ -3,6 +3,10 @@
 $link= $_POST["link"] ;
 $comment= $_POST["comment"] ;
 
+if(substr($link,0,4)!="http"){
+    $link="http://".$link;
+}
+
 
 
 $csvText=array($comment,$link);
