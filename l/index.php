@@ -22,7 +22,7 @@
 
 <body>
     <div align="center" >
-        <div style='height:100px'></div>
+        <div style='height:200px'></div>
         <form action="writeLink.php" method="POST" id="linkInputForm">
             <table>
                 <tr>
@@ -64,6 +64,7 @@
         ?>
 
         </table>
+        <div style='height:200px'></div>
     </div>
 </body>
 
