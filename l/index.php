@@ -12,9 +12,6 @@
                 document.getElementById("linkInputForm").submit();
             }
         }
-        function openNewWin(url){
-	        window.open(url);
-        }
     </script>
     
 
@@ -56,7 +53,7 @@
                         echo "<tr>";
                         echo "<td>".substr($currentColums[0],1)."</td>";
                         $linkStr=substr($currentColums[sizeof($currentColums)-1],0,-3);
-                        echo "<td><a href='' onclick=openNewWin('".$linkStr."')>".$linkStr."</a></td>";                
+                        echo "<td><a href='$linkStr' target='_blank'>".$linkStr."</a></td>";                
                         echo "</tr>";
                     }
                 }
