@@ -1,6 +1,7 @@
 <html>
 <head>
-    <title>月間詳細　<?php echo $_GET["yearMonth"]?></title>
+    <?php $yearMonth=$_GET["yearMonth"];?>
+    <title>月間詳細　<?php echo $yearMonth;?></title>
     <!DOCTYPE HTML>
     <meta charset="UTF-8">
     <meta name="theme-color" content="#FF66CC">
@@ -37,12 +38,16 @@
   </script>
 </head>
 <body>
-    <h3 align="center">月間詳細　<?php echo $_GET["yearMonth"]?></h3>
+    <h3 align="center">月間詳細　<?php echo $yearMonth;?></h3>
     <div align="right">
         <a href="/">入力画面</a>
         <a href="/sum/">月間集計</a>
     </div>
-    
+    <div align="center">
+        <a href="/sum/showMonthDetails.php?yearMonth=<?php echo getLastYearMonth($yearMonth);?>">前月</a>
+        　　　　　
+        <a href="/sum/showMonthDetails.php?yearMonth=<?php echo getNextYearMonth($yearMonth);?>">次月</a>
+    </div>
     <div align="left">
         <a href="javascript:void(0)" onclick="location.reload()">表示順reset</a>
     </div>
@@ -62,7 +67,7 @@
         }
 
         $sql="select * from t_credit_card_user_input_details 
-              where substr(date_of_use,0,7)='".$_GET["yearMonth"]."'
+              where substr(date_of_use,0,7)='".$yearMonth."'
               order by date_of_use;";
 
         $ret = $db->query($sql);
@@ -127,6 +132,17 @@
                 return "";
             }
         }
+        function getNextYearMonth($yearMonth){
+            $dt=strtotime($yearMonth."01");
+            $dt=strtotime("+1 month",$dt);
+            return date("Ym",$dt);
+        }
+        function getLastYearMonth($yearMonth){
+            $dt=strtotime($yearMonth."01");
+            $dt=strtotime("-1 month",$dt);
+            return date("Ym",$dt);
+        }
+        
         ?>
     </table>
 </body>

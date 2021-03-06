@@ -79,8 +79,26 @@ if(isset($_GET["comment"])){
     <h3 align="center">過去詳細　<?php echo isset($_GET["yearMonth"])?$_GET["yearMonth"]:(isset($_GET["store"])?$_GET["store"]:$_GET["user"])." $startDate~$endDate"?></h3>
     <div align="right">
         <a href="/">入力画面</a>
-        <a href="javascript:history.go(-1)">戻る</a>
+        <?php
+            if(isset($_GET["yearMonth"])){
+                echo "<a href='/sumOld/'>過去集計</a>";
+            }else{
+                echo "<a href='javascript:history.go(-1)'>戻る</a>";
+            }
+        ?>
     </div>
+
+    <?php
+      if(isset($_GET["yearMonth"])){
+        $yearMonth=$_GET["yearMonth"];
+        echo "<div align='center'>";
+        echo "<a href='/sumOld/showMonthDetails.php?yearMonth=".getLastYearMonth($yearMonth)."'>前月</a>";
+        echo "　　　　　";
+        echo "<a href='/sumOld/showMonthDetails.php?yearMonth=".getNextYearMonth($yearMonth)."'>次月</a>";
+        echo "</div>";
+      }
+    ?>
+
     <div align="left">
         <a href="javascript:void(0)" onclick="location.reload()">表示順reset</a>
     </div>
@@ -187,6 +205,18 @@ if(isset($_GET["comment"])){
                 return "";
             }
         }
+
+        function getNextYearMonth($yearMonth){
+            $dt=strtotime($yearMonth."01");
+            $dt=strtotime("+1 month",$dt);
+            return date("Ym",$dt);
+        }
+        function getLastYearMonth($yearMonth){
+            $dt=strtotime($yearMonth."01");
+            $dt=strtotime("-1 month",$dt);
+            return date("Ym",$dt);
+        }
+
         ?>
     </table>
 </body>
