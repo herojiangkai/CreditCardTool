@@ -145,5 +145,12 @@
         
         ?>
     </table>
+    <br>
+    <div align="center">
+        <a href="/sum/showMonthDetails.php?yearMonth=<?php echo getLastYearMonth($yearMonth);?>">前月</a>
+        　　　　　
+        <a href="/sum/showMonthDetails.php?yearMonth=<?php echo getNextYearMonth($yearMonth);?>">次月</a>
+    </div>
+    <div style='height:200px'></div>
 </body>
 </html>

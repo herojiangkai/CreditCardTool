@@ -219,5 +219,18 @@ if(isset($_GET["comment"])){
 
         ?>
     </table>
+    <br>
+    <?php
+      if(isset($_GET["yearMonth"])){
+        $yearMonth=$_GET["yearMonth"];
+        echo "<div align='center'>";
+        echo "<a href='/sumOld/showMonthDetails.php?yearMonth=".getLastYearMonth($yearMonth)."'>前月</a>";
+        echo "　　　　　";
+        echo "<a href='/sumOld/showMonthDetails.php?yearMonth=".getNextYearMonth($yearMonth)."'>次月</a>";
+        echo "</div>";
+      }
+    ?>
+    <div style='height:200px'></div>
+
 </body>
 </html>
