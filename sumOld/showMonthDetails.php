@@ -230,6 +230,16 @@ if(isset($_GET["comment"])){
         echo "</div>";
       }
     ?>
+    <div align="right">
+        <a href="/">入力画面</a>
+        <?php
+            if(isset($_GET["yearMonth"])){
+                echo "<a href='/sumOld/'>過去集計</a>";
+            }else{
+                echo "<a href='javascript:history.go(-1)'>戻る</a>";
+            }
+        ?>
+    </div>
     <div style='height:200px'></div>
 
 </body>

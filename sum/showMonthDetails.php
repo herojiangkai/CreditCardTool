@@ -151,6 +151,10 @@
         　　　　　
         <a href="/sum/showMonthDetails.php?yearMonth=<?php echo getNextYearMonth($yearMonth);?>">次月</a>
     </div>
+    <div align="right">
+        <a href="/">入力画面</a>
+        <a href="/sum/">月間集計</a>
+    </div>
     <div style='height:200px'></div>
 </body>
 </html>
