@@ -51,8 +51,9 @@
                     $currentColums=explode('","',$currentLine);
                     if(sizeof($currentColums)>1){
                         echo "<tr>";
-                        echo "<td>".substr($currentColums[0],1)."</td>";
+                        echo "<td>".htmlspecialchars(substr($currentColums[0],1),ENT_QUOTES)."</td>";
                         $linkStr=substr($currentColums[sizeof($currentColums)-1],0,-3);
+                        $linkStr=htmlspecialchars($linkStr,ENT_QUOTES);
                         echo "<td><a href='$linkStr' target='_blank'>".$linkStr."</a></td>";                
                         echo "</tr>";
                     }
