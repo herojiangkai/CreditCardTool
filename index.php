@@ -181,7 +181,7 @@
                     <option value="現金(王)">現金(王)</option>
                     <option value="aeon_姜(9705)">イオン_姜(9705)</option>
                     <option value="aeon_王(9713)">イオン_王(9713)</option>
-                    <option value="epos_姜(8142)">EPOS_姜(8142)</option>
+                    <option value="epos_姜(8743)">EPOS_姜(8743)</option>
                     <option value="epos_王(6393)">EPOS_王(6393)</option>
                     <option value="bic(6116)">Bic(6116)</option>
                     <option value="本人">楽天_姜(6229)</option>
