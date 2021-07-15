@@ -196,14 +196,16 @@
 <tr><td></td><td><input type="checkbox" name="users[]" value="現金(王)" checked>現金(王)</td></tr>
 <tr><td></td><td><input type="checkbox" name="users[]" value="aeon_姜(9705)" checked>イオン_姜(9705)</td></tr>
 <tr><td></td><td><input type="checkbox" name="users[]" value="aeon_王(9713)" checked>イオン_王(9713)</td></tr>
-<tr><td></td><td><input type="checkbox" name="users[]" value="epos_姜(8142)" checked>EPOS_姜(8142)</td></tr>
-<tr><td></td><td><input type="checkbox" name="users[]" value="epos_王(6393)" checked>EPOS_王(6393)</td></tr>
+<tr><td></td><td><input type="checkbox" name="users[]" value="epos_姜(8743)" checked>EPOS_姜(8743)</td></tr>
+<tr><td></td><td><input type="checkbox" name="users[]" value="epos_王(4642)" checked>EPOS_王(4642)</td></tr>
 <tr><td></td><td><input type="checkbox" name="users[]" value="bic(6116)" checked>Bic(6116)</td></tr>
 <tr><td></td><td><input type="checkbox" name="users[]" value="本人" checked>楽天_姜(6229)</td></tr>
 <tr><td></td><td><input type="checkbox" name="users[]" value="家族" checked>楽天_王(9283)</td></tr>
 <tr><td></td><td><input type="checkbox" name="users[]" value="lumine(7914)" checked>Lumine(7914)</td></tr>
 <tr><td></td><td><input type="checkbox" name="users[]" value="ft(8518)" checked>ファミマT(8518)</td></tr>
 <tr><td></td><td><input type="checkbox" name="users[]" value="toho(8000)" checked>TOHO(8000)</td></tr>
+<tr><td></td><td><input type="checkbox" name="users[]" value="epos_姜(8142)" checked>【旧】EPOS_姜(8142)</td></tr>
+<tr><td></td><td><input type="checkbox" name="users[]" value="epos_王(6393)" checked>【旧】EPOS_王(6393)</td></tr>
 <tr><td>支払方法:</td><td><input type="text" name="paymentMethod" id="paymentMethod" onfocus="showPaymentMethods()"></td></tr>
 <tr><td>備考:</td><td><input type="text" name="comment" id="comment" onfocus="showComments()"></td></tr>
 <tr><td></td><td><ons-button onclick='document.form1.submit();'>検索</ons-button></td></tr>

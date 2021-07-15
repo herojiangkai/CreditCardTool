@@ -100,8 +100,8 @@
                     printSelection("現金(王)","現金(王)",$user);
                     printSelection("aeon_姜(9705)","イオン_姜(9705)",$user);
                     printSelection("aeon_王(9713)","イオン_王(9713)",$user);
-                    printSelection("epos_姜(8142)","EPOS_姜(8142)",$user);
-                    printSelection("epos_王(6393)","EPOS_王(6393)",$user);
+                    printSelection("epos_姜(8743)","EPOS_姜(8743)",$user);
+                    printSelection("epos_王(4642)","EPOS_王(4642)",$user);
                     printSelection("bic(6116)","Bic(6116)",$user);
                     printSelection("本人","楽天_姜(6229)",$user);
                     printSelection("家族","楽天_王(9283)",$user);
